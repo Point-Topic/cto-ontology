@@ -1,0 +1,2117 @@
+Prefix: : <http://www.w3.org/2002/07/owl#>
+Prefix: cc: <http://creativecommons.org/ns#>
+Prefix: dc: <http://purl.org/dc/terms/>
+Prefix: foaf: <http://xmlns.com/foaf/0.1/>
+Prefix: geo: <http://www.w3.org/2003/01/geo/wgs84_pos/>
+Prefix: om: <http://purl.oclc.org/net/unis/ontology/sensordata.owl/>
+Prefix: owl: <http://www.w3.org/2002/07/owl#>
+Prefix: rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+Prefix: rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+Prefix: time: <http://www.w3.org/2006/time#>
+Prefix: toco: <http://purl.org/toco/>
+Prefix: units: <https://sweet.jpl.nasa.gov/>
+Prefix: vann: <http://purl.org/vacob/vann/>
+Prefix: xml: <http://www.w3.org/XML/1998/namespace>
+Prefix: xsd: <http://www.w3.org/2001/XMLSchema#>
+
+
+
+Ontology: <http://purl.org/toco/>
+
+
+Annotations: 
+    cc:license <http://creativecommons.org/licenses/by/3.0/>,
+    dc:contributor <http://www.macs.hw.ac.uk/~ajg33/>,
+    dc:contributor <https://www.eng.ed.ac.uk/about/people/mr-mohammad-dehghani-soltani>,
+    dc:contributor <https://www.hw.ac.uk/staff/uk/eps/stephen-mclaughlin.htm>,
+    dc:creator <https://www.gla.ac.uk/schools/computing/staff/qianruzhou/>,
+    dc:description "A ontology developed for telecommunciation network systems with hybrid technologies, e.g., WiFi, LiFi, LTE, 2G/3G, optical, etc.",
+    dc:issued "2015-3-1"^^xsd:date,
+    dc:modified "2019-3-29"^^xsd:date,
+    dc:publisher <http://hw.ac.uk>,
+    dc:rights "Copyright  © 2015 Qianru Zhou",
+    dc:title "Toucan Ontology"@en,
+    vann:preferredNamespacePrefix "toco",
+    vann:preferredNamespaceUri "http://purl.org/toco/",
+    rdfs:comment "Version 1.1: creation"@en,
+    owl:versionInfo 1.1
+
+AnnotationProperty: cc:license
+
+    
+AnnotationProperty: dc:contributor
+
+    
+AnnotationProperty: dc:creator
+
+    
+AnnotationProperty: dc:description
+
+    
+AnnotationProperty: dc:issued
+
+    
+AnnotationProperty: dc:modified
+
+    
+AnnotationProperty: dc:publisher
+
+    
+AnnotationProperty: dc:rights
+
+    
+AnnotationProperty: dc:title
+
+    
+AnnotationProperty: owl:versionInfo
+
+    
+AnnotationProperty: rdfs:comment
+
+    
+AnnotationProperty: rdfs:isDefinedBy
+
+    
+AnnotationProperty: rdfs:label
+
+    
+AnnotationProperty: toco:contributor
+
+    
+AnnotationProperty: toco:license
+
+    
+AnnotationProperty: vann:preferredNamespacePrefix
+
+    
+AnnotationProperty: vann:preferredNamespaceUri
+
+    
+Datatype: rdf:PlainLiteral
+
+    
+Datatype: rdfs:Literal
+
+    
+Datatype: xsd:boolean
+
+    
+Datatype: xsd:dateTime
+
+    
+Datatype: xsd:float
+
+    
+Datatype: xsd:int
+
+    
+Datatype: xsd:string
+
+    
+ObjectProperty: <http://www.w3.org/2003/01/geo/wgs84_pos#location>
+
+    Annotations: 
+        rdfs:comment "The relation between something and the point, 
+ or other geometrical thing in space, where it is.  For example, the realtionship between
+ a radio tower and a Point with a given lat and long.
+ Or a relationship between a park and its outline as a closed arc of points, or a road and
+ its location as a arc (a sequence of points).
+ Clearly in practice there will be limit to the accuracy of any such statement, but one would expect
+ an accuracy appropriate for the size of the object and uses such as mapping .",
+        rdfs:isDefinedBy <http://www.w3.org/2003/01/geo/wgs84_pos#>
+    
+    Domain: 
+        toco:Device
+    
+    Range: 
+        <http://www.w3.org/2003/01/geo/wgs84_pos#SpartialThing>
+    
+    
+ObjectProperty: om:hasUnits
+
+    Annotations: 
+        rdfs:comment "the unit of an observation or measurement."^^xsd:string,
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    Domain: 
+        om:ObervationAndMeasurement
+    
+    Range: 
+        <http://purl.obolibrary.org/obo/uo.owl/unit>
+    
+    
+ObjectProperty: owl:topObjectProperty
+
+    
+ObjectProperty: toco:apsInRange
+
+    Annotations: 
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    Domain: 
+        toco:UserDevice
+    
+    Range: 
+        toco:AccessPoint
+    
+    
+ObjectProperty: toco:belongsTo
+
+    Annotations: 
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    Domain: 
+        toco:UserDevice
+    
+    Range: 
+        toco:User
+    
+    InverseOf: 
+        toco:hasDevice
+    
+    
+ObjectProperty: toco:from
+
+    Annotations: 
+        rdfs:comment "the source node that the link is transmit from."^^xsd:string,
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    Domain: 
+        toco:Link
+    
+    Range: 
+        toco:Interface
+    
+    
+ObjectProperty: toco:hasAssociatedStations
+
+    Annotations: 
+        rdfs:comment "in wireless networks, the user equipments (mobile stations in another term, e.g., phones, laptops, tablets, etc.) that are associated to the access point."^^xsd:string,
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    Domain: 
+        toco:AccessPoint
+    
+    Range: 
+        toco:UserDevice
+    
+    
+ObjectProperty: toco:hasBandwidth
+
+    Annotations: 
+        rdfs:comment "the bandwidth of the link"^^xsd:string,
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    SubPropertyOf: 
+        toco:hasLinkProperty
+    
+    Domain: 
+        toco:Link
+    
+    Range: 
+        om:ObervationAndMeasurement
+    
+    
+ObjectProperty: toco:hasDatarate
+
+    Annotations: 
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    SubPropertyOf: 
+        toco:hasLinkProperty
+    
+    Domain: 
+        toco:Link
+    
+    Range: 
+        om:ObervationAndMeasurement
+    
+    
+ObjectProperty: toco:hasDevice
+
+    Annotations: 
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    Domain: 
+        toco:User
+    
+    Range: 
+        toco:UserDevice
+    
+    InverseOf: 
+        toco:belongsTo
+    
+    
+ObjectProperty: toco:hasDistance
+
+    Annotations: 
+        rdfs:comment "the Euclidean distance between the LiFi user equipment and access point."^^xsd:string,
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    SubPropertyOf: 
+        toco:hasLiFiAssociationProperty
+    
+    Domain: 
+        toco:LiFiAssociation
+    
+    
+ObjectProperty: toco:hasFlow
+
+    Annotations: 
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    Domain: 
+        toco:SystemDevice
+    
+    Range: 
+        toco:Flow
+    
+    
+ObjectProperty: toco:hasFlowAction
+
+    Annotations: 
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    Domain: 
+        toco:Flow
+    
+    Range: 
+        toco:Action
+    
+    
+ObjectProperty: toco:hasIncidentAngle
+
+    Annotations: 
+        rdfs:comment "The angle of incidence of the LED receiver on LiFi user equipment, which is the angle between the visiable light ray incident on a surface and the line perpendicular to the surface at the point of incidence, called the normal."^^xsd:string,
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    SubPropertyOf: 
+        toco:hasLiFiAssociationProperty
+    
+    Domain: 
+        toco:LiFiAssociation
+    
+    
+ObjectProperty: toco:hasInterface
+
+    Annotations: 
+        rdfs:comment "the fact that a device has a interface."^^xsd:string,
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    Domain: 
+        toco:Device
+    
+    Range: 
+        toco:Interface
+    
+    InverseOf: 
+        toco:isIn
+    
+    
+ObjectProperty: toco:hasLTEAssociation
+
+    SubPropertyOf: 
+        toco:hasWirelessAssociation
+    
+    Range: 
+        toco:LTEAssociation
+    
+    
+ObjectProperty: toco:hasLiFiAssociation
+
+    SubPropertyOf: 
+        toco:hasWirelessAssociation
+    
+    Domain: 
+        toco:LiFiWLAN
+    
+    Range: 
+        toco:LiFiAssociation
+    
+    
+ObjectProperty: toco:hasLiFiAssociationProperty
+
+    Annotations: 
+        rdfs:comment "The properties of the visiable light association between the LED on LiFi access point and LiFi user equipment."^^xsd:string
+    
+    SubPropertyOf: 
+        toco:hasWirelessLinkProperty
+    
+    Domain: 
+        toco:LiFiAssociation
+    
+    
+ObjectProperty: toco:hasLiFiWLAN
+
+    SubPropertyOf: 
+        toco:hasWLAN
+    
+    Domain: 
+        toco:Device
+    
+    Range: 
+        toco:LiFiWLAN
+    
+    
+ObjectProperty: toco:hasLink
+
+    Annotations: 
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    Domain: 
+        toco:Interface
+    
+    Range: 
+        toco:Link
+    
+    
+ObjectProperty: toco:hasLinkProperty
+
+    Annotations: 
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    Domain: 
+        toco:Link
+    
+    
+ObjectProperty: toco:hasPort
+
+    SubPropertyOf: 
+        toco:hasInterface
+    
+    Domain: 
+        toco:Device
+    
+    Range: 
+        toco:Interface
+    
+    
+ObjectProperty: toco:hasRadianceAngle
+
+    Annotations: 
+        rdfs:comment "the radiance angle of the light ray transmitted from LED on LiFi access point."^^xsd:string,
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    SubPropertyOf: 
+        toco:hasLiFiAssociationProperty
+    
+    Domain: 
+        toco:LiFiAssociation
+    
+    
+ObjectProperty: toco:hasRoundTripTime
+
+    Annotations: 
+        rdfs:comment "the round trip time of a link, which is the time taken for signal travel a round trip via this link."^^xsd:string
+    
+    SubPropertyOf: 
+        toco:hasLinkProperty
+    
+    Domain: 
+        toco:Link
+    
+    Range: 
+        om:ObervationAndMeasurement
+    
+    
+ObjectProperty: toco:hasSatelliteAssociation
+
+    SubPropertyOf: 
+        toco:hasWirelessAssociation
+    
+    Domain: 
+        toco:Device
+    
+    Range: 
+        toco:SatelliteAssociation
+    
+    
+ObjectProperty: toco:hasService
+
+    Annotations: 
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    Domain: 
+        toco:UserDevice
+    
+    Range: 
+        toco:Service
+    
+    
+ObjectProperty: toco:hasStandardDeviation
+
+    Annotations: 
+        rdfs:comment "After multiple round trip time tested on a link, the deviation of these test results."^^xsd:string
+    
+    SubPropertyOf: 
+        toco:hasLinkProperty
+    
+    Domain: 
+        toco:Link
+    
+    Range: 
+        om:ObervationAndMeasurement
+    
+    
+ObjectProperty: toco:hasThroughPut
+
+    SubPropertyOf: 
+        toco:hasLinkProperty
+    
+    Domain: 
+        toco:Link
+    
+    Range: 
+        om:ObervationAndMeasurement
+    
+    
+ObjectProperty: toco:hasTransmitPower
+
+    Annotations: 
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    Domain: 
+        toco:Interface
+    
+    Range: 
+        om:ObervationAndMeasurement
+    
+    
+ObjectProperty: toco:hasTxpower
+
+    Annotations: 
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    SubPropertyOf: 
+        toco:hasLinkProperty
+    
+    Domain: 
+        toco:Link
+    
+    Range: 
+        om:ObervationAndMeasurement
+    
+    
+ObjectProperty: toco:hasUserDeviceStatus
+
+    Domain: 
+        toco:UserDevice
+    
+    Range: 
+        toco:UserDeviceStatus
+    
+    
+ObjectProperty: toco:hasWLAN
+
+    SubPropertyOf: 
+        toco:hasInterface
+    
+    Domain: 
+        toco:Device
+    
+    Range: 
+        toco:WLAN
+    
+    
+ObjectProperty: toco:hasWiFiAssociation
+
+    SubPropertyOf: 
+        toco:hasWirelessAssociation
+    
+    Domain: 
+        toco:WiFiWLAN
+    
+    Range: 
+        toco:WiFiAssociation
+    
+    
+ObjectProperty: toco:hasWiFiWLAN
+
+    SubPropertyOf: 
+        toco:hasWLAN
+    
+    Domain: 
+        toco:Device
+    
+    Range: 
+        toco:WiFiWLAN
+    
+    
+ObjectProperty: toco:hasWiredLink
+
+    SubPropertyOf: 
+        toco:hasLink
+    
+    DisjointWith: 
+        toco:hasWirelessAssociation
+    
+    Domain: 
+        toco:Interface
+    
+    Range: 
+        toco:WiredLink
+    
+    
+ObjectProperty: toco:hasWirelessAssociation
+
+    SubPropertyOf: 
+        toco:hasLink
+    
+    DisjointWith: 
+        toco:hasWiredLink
+    
+    Domain: 
+        toco:WLAN
+    
+    Range: 
+        toco:WirelessAssociation
+    
+    
+ObjectProperty: toco:hasWirelessLinkProperty
+
+    SubPropertyOf: 
+        toco:hasLinkProperty
+    
+    Domain: 
+        toco:WirelessAssociation
+    
+    
+ObjectProperty: toco:isIn
+
+    Annotations: 
+        rdfs:comment "the relation that a interface belongs to a device. A device can have multiple interfaces, but a interface can be in one and only one device."^^xsd:string,
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    Domain: 
+        toco:Interface
+    
+    Range: 
+        toco:Device
+    
+    InverseOf: 
+        toco:hasInterface
+    
+    
+ObjectProperty: toco:range
+
+    Annotations: 
+        rdfs:comment "the signal range of wireless devices, such as WiFi access point, LiFi access point, WiFi mobile station, and LiFi mobile station."^^xsd:string,
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    Domain: 
+        toco:Device
+    
+    Range: 
+        om:ObervationAndMeasurement
+    
+    
+ObjectProperty: toco:stationsInRange
+
+    Annotations: 
+        rdfs:comment "in wireless networks (WiFi/LiFi), the mobile stations in the range of the access points."^^xsd:string,
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    Domain: 
+        toco:AccessPoint
+    
+    Range: 
+        toco:UserEquipment
+    
+    
+ObjectProperty: toco:to
+
+    Annotations: 
+        rdfs:comment "the destination node of the link."^^xsd:string,
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    Domain: 
+        toco:Link
+    
+    Range: 
+        toco:Interface
+    
+    
+DataProperty: <http://www.w3.org/2003/01/geo/wgs84_pos#alt>
+
+    Annotations: 
+        rdfs:comment "the altitude of a spartial thing, i.e., a point.",
+        rdfs:isDefinedBy <http://www.w3.org/2003/01/geo/wgs84_pos#>
+    
+    Domain: 
+        <http://www.w3.org/2003/01/geo/wgs84_pos#SpartialThing>
+    
+    Range: 
+        xsd:float
+    
+    
+DataProperty: <http://www.w3.org/2003/01/geo/wgs84_pos#lat>
+
+    Annotations: 
+        rdfs:isDefinedBy <http://www.w3.org/2003/01/geo/wgs84_pos#>,
+        rdfs:isDefinedBy "the latitude of a point"
+    
+    Domain: 
+        <http://www.w3.org/2003/01/geo/wgs84_pos#SpartialThing>
+    
+    Range: 
+        xsd:float
+    
+    
+DataProperty: <http://www.w3.org/2003/01/geo/wgs84_pos#long>
+
+    Annotations: 
+        rdfs:isDefinedBy <http://www.w3.org/2003/01/geo/wgs84_pos#>,
+        rdfs:isDefinedBy "the longitude of a spartial thing, i.e., a point."
+    
+    Domain: 
+        <http://www.w3.org/2003/01/geo/wgs84_pos#SpartialThing>
+    
+    Range: 
+        xsd:float
+    
+    
+DataProperty: foaf:firstName
+
+    Annotations: 
+        rdfs:comment "the first name of a user.",
+        rdfs:isDefinedBy <http://xmlns.com/foaf/0.1/>
+    
+    Domain: 
+        foaf:Person
+    
+    Range: 
+        rdfs:Literal
+    
+    
+DataProperty: foaf:gender
+
+    Annotations: 
+        rdfs:comment "the gender of a user, reused from foaf",
+        rdfs:isDefinedBy <http://xmlns.com/foaf/0.1/>
+    
+    Domain: 
+        foaf:Person
+    
+    Range: 
+        rdfs:Literal
+    
+    
+DataProperty: foaf:lastName
+
+    Annotations: 
+        rdfs:comment "the last name of a person.
+Reused from foaf",
+        rdfs:isDefinedBy <http://xmlns.com/foaf/0.1/>
+    
+    Domain: 
+        foaf:Person
+    
+    Range: 
+        rdfs:Literal
+    
+    
+DataProperty: om:hasUnit
+
+    Annotations: 
+        rdfs:comment "reused from SENSEI Observation and Measurement Ontology."^^xsd:string,
+        rdfs:isDefinedBy <http://purl.oclc.org/net/unis/ontology/sensordata.owl/>
+    
+    Domain: 
+        om:ObervationAndMeasurement
+    
+    Range: 
+        xsd:string
+    
+    
+DataProperty: om:hasValue
+
+    Annotations: 
+        rdfs:comment "the value of an observation or measurement."^^xsd:string,
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    Domain: 
+        om:ObervationAndMeasurement
+    
+    Range: 
+        xsd:float
+    
+    
+DataProperty: toco:channel
+
+    Annotations: 
+        rdfs:comment "the channel id of a interface."^^xsd:string,
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    Domain: 
+        toco:Interface
+    
+    Range: 
+        xsd:int
+    
+    
+DataProperty: toco:cookie
+
+    Annotations: 
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    Domain: 
+        toco:Flow
+    
+    Range: 
+        xsd:string
+    
+    SubPropertyOf: 
+        toco:hasFlowProperty
+    
+    
+DataProperty: toco:dlDst
+
+    Annotations: 
+        rdfs:comment "the Ethernet destination address of the flow. It should be an MAC address, with 6 pairs of hexadecimal digits."
+    
+    Domain: 
+        toco:Flow
+    
+    Range: 
+        xsd:string
+    
+    SubPropertyOf: 
+        toco:hasFlowProperty
+    
+    
+DataProperty: toco:dlSrc
+
+    Annotations: 
+        rdfs:comment "the Ethernet source address of the flow. It should be an MAC address with 6 pairs of hexadecimal digits"
+    
+    Domain: 
+        toco:Flow
+    
+    Range: 
+        xsd:string
+    
+    SubPropertyOf: 
+        toco:hasFlowProperty
+    
+    
+DataProperty: toco:driver
+
+    Domain: 
+        toco:AccessPoint
+    
+    Range: 
+        xsd:string
+    
+    
+DataProperty: toco:flags
+
+    Annotations: 
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    Domain: 
+        toco:Flow
+    
+    Range: 
+        xsd:int
+    
+    SubPropertyOf: 
+        toco:hasFlowProperty
+    
+    
+DataProperty: toco:frequency
+
+    Annotations: 
+        rdfs:comment "the frequency of the radio wave transmitted by a wireless interface (WLAN)."^^xsd:string
+    
+    Domain: 
+        toco:Interface
+    
+    Range: 
+        xsd:float
+    
+    
+DataProperty: toco:hardTimeout
+
+    Annotations: 
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    Domain: 
+        toco:Flow
+    
+    Range: 
+        xsd:string
+    
+    SubPropertyOf: 
+        toco:hasFlowProperty
+    
+    
+DataProperty: toco:hasAntennaGain
+
+    Annotations: 
+        rdfs:comment "the gain of an antenna on the wireless interface."^^xsd:string,
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    Domain: 
+        toco:WLAN
+    
+    Range: 
+        xsd:int
+    
+    
+DataProperty: toco:hasAntennaHeight
+
+    Annotations: 
+        rdfs:comment "the height of the antenna of a wireless interface"^^xsd:string,
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    Domain: 
+        toco:WLAN
+    
+    Range: 
+        xsd:float
+    
+    
+DataProperty: toco:hasDistance
+
+    Annotations: 
+        rdfs:comment "the Euclidean distance between the LiFi user equipment and access point."^^xsd:string,
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    Range: 
+        xsd:float
+    
+    
+DataProperty: toco:hasErrorCode
+
+    Annotations: 
+        rdfs:comment "the error code of a service."^^xsd:string,
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    Domain: 
+        toco:Service
+    
+    Range: 
+        xsd:string
+    
+    
+DataProperty: toco:hasFieldOfView
+
+    Annotations: 
+        rdfs:comment "Field of view (FOV) is the open observable area where a LiFi user equipment could receive visiable light signal. It is defined by let the incident angle of the LiFi user equipment equals to Pi/2.
+
+If the incident angle larger than Pi/2, the light ray is out of the FOV, thus cannot be received by the LiFi user equipment."^^xsd:string,
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    Domain: 
+        toco:LiFiUserEquipment
+    
+    Range: 
+        xsd:float
+    
+    SubPropertyOf: 
+        toco:hasLiFiUserEquipmentProperty
+    
+    
+DataProperty: toco:hasFlowProperty
+
+    Annotations: 
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    
+DataProperty: toco:hasGainOfConcentrator
+
+    Annotations: 
+        rdfs:comment "The gain of the concentrator on the LiFi user equipment, usually equals to 1."^^xsd:string,
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    Domain: 
+        toco:LiFiUserEquipment
+    
+    Range: 
+        xsd:float
+    
+    SubPropertyOf: 
+        toco:hasLiFiUserEquipmentProperty
+    
+    
+DataProperty: toco:hasGainofOpticalFilter
+
+    Annotations: 
+        rdfs:comment "Gain of optical filter on LiFi access point."^^xsd:string,
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    Domain: 
+        toco:LiFiAccessPoint
+    
+    Range: 
+        xsd:float
+    
+    SubPropertyOf: 
+        toco:hasLiFiAccessPointProperty
+    
+    
+DataProperty: toco:hasHalfIntensityAngle
+
+    Annotations: 
+        rdfs:comment "The angle of half intensity of the LED light transmiting visible light signal in a LiFi access point. 
+
+A fixed value. It is the angle where the radiated intensity will be half as intense as it would be at 0 degrees, or pointing straight ahead.
+
+Factors that contribute to the angle of half intensity include the amount of diffusing material in the epoxy, the shape of the reflector cup which surrounds the LED chip, the shape of the LED lens, the distance from the LED to the tip of the lens, and the type of emitter chip.
+
+The most common value is Pi/3."^^xsd:string,
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    Domain: 
+        toco:LiFiAccessPoint
+    
+    Range: 
+        xsd:float
+    
+    SubPropertyOf: 
+        toco:hasLiFiAccessPointProperty
+    
+    
+DataProperty: toco:hasIP
+
+    Annotations: 
+        rdfs:comment "the IP address of the interface."^^xsd:string,
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    Domain: 
+        toco:Interface
+    
+    Range: 
+        xsd:string
+    
+    
+DataProperty: toco:hasIncidentAngle
+
+    Annotations: 
+        rdfs:comment "The angle of incidence of the LED receiver on LiFi user equipment, which is the angle between the visiable light ray incident on a surface and the line perpendicular to the surface at the point of incidence, called the normal."^^xsd:string,
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    Range: 
+        xsd:float
+    
+    
+DataProperty: toco:hasInterfaceName
+
+    Annotations: 
+        rdfs:comment "the port number of an interface"^^xsd:string,
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    Domain: 
+        toco:Interface
+    
+    Range: 
+        xsd:string
+    
+    
+DataProperty: toco:hasJoinDate
+
+    Annotations: 
+        rdfs:comment "the join date of the user device",
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    Domain: 
+        toco:UserDevice
+    
+    Range: 
+        xsd:dateTime
+    
+    
+DataProperty: toco:hasLiFiAccessPointProperty
+
+    Annotations: 
+        rdfs:comment "datatype properties dedicated for LiFi access points"^^xsd:string,
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    Domain: 
+        toco:LiFiAccessPoint
+    
+    Range: 
+        xsd:float
+    
+    
+DataProperty: toco:hasLiFiAssociationProperty
+
+    Annotations: 
+        rdfs:comment "The properties of the visiable light association between the LED on LiFi access point and LiFi user equipment."^^xsd:string
+    
+    Range: 
+        xsd:float
+    
+    
+DataProperty: toco:hasLiFiUserEquipmentProperty
+
+    Annotations: 
+        rdfs:comment "properties of LiFi user equipments."^^xsd:string,
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    Domain: 
+        toco:LiFiUserEquipment
+    
+    Range: 
+        xsd:float
+    
+    
+DataProperty: toco:hasLinkProperty
+
+    Annotations: 
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    Range: 
+        xsd:float
+    
+    
+DataProperty: toco:hasMAC
+
+    Annotations: 
+        rdfs:comment "the MAC address of the interface."^^xsd:string,
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    Domain: 
+        toco:Interface
+    
+    Range: 
+        xsd:string
+    
+    
+DataProperty: toco:hasOpticalTransmittedPower
+
+    Annotations: 
+        rdfs:comment "the transmitted power of the LED on the LiFi access point"^^xsd:string,
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    Domain: 
+        toco:LiFiAccessPoint
+    
+    Range: 
+        xsd:float
+    
+    SubPropertyOf: 
+        toco:hasLiFiAccessPointProperty
+    
+    
+DataProperty: toco:hasPacketLoss
+
+    Annotations: 
+        rdfs:comment "the packet loss rate of a link, usually in percentage."^^xsd:string,
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    Domain: 
+        toco:Link
+    
+    Range: 
+        xsd:float
+    
+    
+DataProperty: toco:hasRadianceAngle
+
+    Annotations: 
+        rdfs:comment "the radiance angle of the light ray transmitted from LED on LiFi access point."^^xsd:string,
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    Range: 
+        xsd:float
+    
+    
+DataProperty: toco:hasRespansivity
+
+    Annotations: 
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    Domain: 
+        toco:LiFiAccessPoint
+    
+    Range: 
+        xsd:float
+    
+    SubPropertyOf: 
+        toco:hasLiFiAccessPointProperty
+    
+    
+DataProperty: toco:hasServiceEndTime
+
+    Annotations: 
+        rdfs:comment "the time that a service ends."^^xsd:string,
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    Domain: 
+        toco:Service
+    
+    Range: 
+        xsd:dateTime
+    
+    
+DataProperty: toco:hasServiceStartTime
+
+    Annotations: 
+        rdfs:comment "the start time of a service."^^xsd:string,
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    Domain: 
+        toco:Service
+    
+    Range: 
+        xsd:dateTime
+    
+    
+DataProperty: toco:hasServiceStatus
+
+    Annotations: 
+        rdfs:comment "the status of the service."^^xsd:string,
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    Domain: 
+        toco:Service
+    
+    Range: 
+        xsd:string
+    
+    
+DataProperty: toco:hasServiceType
+
+    Annotations: 
+        rdfs:comment "the type of communication services, e.g., video, audio, file transmit, text transmiting, etc."^^xsd:string,
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    Domain: 
+        toco:Service
+    
+    Range: 
+        xsd:string
+    
+    
+DataProperty: toco:hasUserID
+
+    Annotations: 
+        rdfs:comment "the user ID of the user",
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    Domain: 
+        toco:User
+    
+    Range: 
+        xsd:string
+    
+    
+DataProperty: toco:hasWirelessLinkProperty
+
+    Range: 
+        xsd:float
+    
+    
+DataProperty: toco:idleTimeout
+
+    Annotations: 
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    Domain: 
+        toco:Flow
+    
+    Range: 
+        xsd:string
+    
+    SubPropertyOf: 
+        toco:hasFlowProperty
+    
+    
+DataProperty: toco:inPort
+
+    Annotations: 
+        rdfs:comment "the port number of the in port of the flow, or could be a keyword, such as \"LOCAL\""
+    
+    Domain: 
+        toco:Flow
+    
+    Range: 
+        xsd:string
+    
+    SubPropertyOf: 
+        toco:hasFlowProperty
+    
+    
+DataProperty: toco:isUP
+
+    Annotations: 
+        rdfs:comment "indicate whether a interface is up or not.",
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    Domain: 
+        toco:Interface
+    
+    Range: 
+        xsd:boolean
+    
+    
+DataProperty: toco:mode
+
+    Domain: 
+        toco:Interface
+    
+    Range: 
+        xsd:int
+    
+    
+DataProperty: toco:nwProtocol
+
+    Annotations: 
+        rdfs:comment "network protocol. The nw_proto property of a flow."
+    
+    Domain: 
+        toco:Flow
+    
+    Range: 
+        xsd:string
+    
+    SubPropertyOf: 
+        toco:hasFlowProperty
+    
+    
+DataProperty: toco:nwTos
+
+    Annotations: 
+        rdfs:comment "network type of service. the nw_tos property of a flow. It should be a decimal number with the value between 0-255."
+    
+    Domain: 
+        toco:Flow
+    
+    Range: 
+        xsd:int
+    
+    SubPropertyOf: 
+        toco:hasFlowProperty
+    
+    
+DataProperty: toco:priority
+
+    Annotations: 
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    Domain: 
+        toco:Flow
+    
+    Range: 
+        xsd:string
+    
+    SubPropertyOf: 
+        toco:hasFlowProperty
+    
+    
+DataProperty: toco:ssid
+
+    Annotations: 
+        rdfs:comment "in wireless networks, the ssid of the network this device belongs to."^^xsd:string,
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    Domain: 
+        toco:Device
+    
+    Range: 
+        xsd:string
+    
+    
+DataProperty: toco:tableId
+
+    Annotations: 
+        rdfs:isDefinedBy <http://purl.org/toco/>
+    
+    Domain: 
+        toco:Flow
+    
+    Range: 
+        xsd:string
+    
+    SubPropertyOf: 
+        toco:hasFlowProperty
+    
+    
+DataProperty: toco:toPort
+
+    Annotations: 
+        rdfs:comment "the port number of the port forward to defined by the to_port property of the flow action OUTPUT."
+    
+    Domain: 
+        toco:Action
+    
+    Range: 
+        xsd:string
+    
+    
+Class: <http://purl.obolibrary.org/obo/UO_0000001>
+
+    Annotations: 
+        rdfs:isDefinedBy <http://purl.obolibrary.org/obo/uo.owl>,
+        rdfs:label "length unit"
+    
+    SubClassOf: 
+        <http://purl.obolibrary.org/obo/uo.owl/unit>
+    
+    
+Class: <http://purl.obolibrary.org/obo/UO_0000003>
+
+    Annotations: 
+        rdfs:isDefinedBy <http://purl.obolibrary.org/obo/uo.owl>,
+        rdfs:label "time unit"
+    
+    SubClassOf: 
+        <http://purl.obolibrary.org/obo/uo.owl/unit>
+    
+    
+Class: <http://purl.obolibrary.org/obo/UO_0000008>
+
+    Annotations: 
+        rdfs:isDefinedBy <http://purl.obolibrary.org/obo/uo.owl>,
+        rdfs:label "meter"
+    
+    SubClassOf: 
+        <http://purl.obolibrary.org/obo/UO_0000001>
+    
+    
+Class: <http://purl.obolibrary.org/obo/UO_0000010>
+
+    Annotations: 
+        rdfs:isDefinedBy <http://purl.obolibrary.org/obo/uo.owl>,
+        rdfs:label "second"
+    
+    SubClassOf: 
+        <http://purl.obolibrary.org/obo/UO_0000003>
+    
+    
+Class: <http://purl.obolibrary.org/obo/UO_0000016>
+
+    Annotations: 
+        rdfs:isDefinedBy <http://purl.obolibrary.org/obo/uo.owl>,
+        rdfs:label "millimeter"
+    
+    SubClassOf: 
+        <http://purl.obolibrary.org/obo/UO_0000001>
+    
+    
+Class: <http://purl.obolibrary.org/obo/UO_0000017>
+
+    Annotations: 
+        rdfs:isDefinedBy <http://purl.obolibrary.org/obo/uo.owl>,
+        rdfs:label "micrometer"
+    
+    SubClassOf: 
+        <http://purl.obolibrary.org/obo/UO_0000001>
+    
+    
+Class: <http://purl.obolibrary.org/obo/UO_0000028>
+
+    Annotations: 
+        rdfs:isDefinedBy <http://purl.obolibrary.org/obo/uo.owl>,
+        rdfs:label "millisecond"
+    
+    SubClassOf: 
+        <http://purl.obolibrary.org/obo/UO_0000003>
+    
+    
+Class: <http://purl.obolibrary.org/obo/UO_0000031>
+
+    Annotations: 
+        rdfs:isDefinedBy <http://purl.obolibrary.org/obo/uo.owl>,
+        rdfs:label "minute"
+    
+    SubClassOf: 
+        <http://purl.obolibrary.org/obo/UO_0000003>
+    
+    
+Class: <http://purl.obolibrary.org/obo/UO_0000032>
+
+    Annotations: 
+        rdfs:isDefinedBy <http://purl.obolibrary.org/obo/uo.owl>,
+        rdfs:label "hour"
+    
+    SubClassOf: 
+        <http://purl.obolibrary.org/obo/UO_0000003>
+    
+    
+Class: <http://purl.obolibrary.org/obo/UO_0000034>
+
+    Annotations: 
+        rdfs:isDefinedBy <http://purl.obolibrary.org/obo/uo.owl>,
+        rdfs:label "week"
+    
+    SubClassOf: 
+        <http://purl.obolibrary.org/obo/UO_0000003>
+    
+    
+Class: <http://purl.obolibrary.org/obo/UO_0000035>
+
+    Annotations: 
+        rdfs:isDefinedBy <http://purl.obolibrary.org/obo/uo.owl>,
+        rdfs:label "month"
+    
+    SubClassOf: 
+        <http://purl.obolibrary.org/obo/UO_0000003>
+    
+    
+Class: <http://purl.obolibrary.org/obo/UO_0000036>
+
+    Annotations: 
+        rdfs:isDefinedBy <http://purl.obolibrary.org/obo/uo.owl>,
+        rdfs:label "year"
+    
+    SubClassOf: 
+        <http://purl.obolibrary.org/obo/UO_0000003>
+    
+    
+Class: <http://purl.obolibrary.org/obo/UO_0000058>
+
+    Annotations: 
+        rdfs:isDefinedBy <http://purl.obolibrary.org/obo/uo.owl>,
+        rdfs:label "rotational frequency unit"
+    
+    SubClassOf: 
+        <http://purl.obolibrary.org/obo/UO_0000105>
+    
+    
+Class: <http://purl.obolibrary.org/obo/UO_0000060>
+
+    Annotations: 
+        rdfs:isDefinedBy <http://purl.obolibrary.org/obo/uo.owl>,
+        rdfs:label "speed/velocity unit"
+    
+    SubClassOf: 
+        <http://purl.obolibrary.org/obo/uo.owl/unit>
+    
+    
+Class: <http://purl.obolibrary.org/obo/UO_0000092>
+
+    Annotations: 
+        rdfs:isDefinedBy <http://purl.obolibrary.org/obo/uo.owl>,
+        rdfs:label "turns per second"
+    
+    SubClassOf: 
+        <http://purl.obolibrary.org/obo/UO_0000058>
+    
+    
+Class: <http://purl.obolibrary.org/obo/UO_0000094>
+
+    Annotations: 
+        rdfs:isDefinedBy <http://purl.obolibrary.org/obo/uo.owl>,
+        rdfs:label "meter per second"
+    
+    SubClassOf: 
+        <http://purl.obolibrary.org/obo/UO_0000060>
+    
+    
+Class: <http://purl.obolibrary.org/obo/UO_0000105>
+
+    Annotations: 
+        rdfs:label "frequency unit"
+    
+    SubClassOf: 
+        <http://purl.obolibrary.org/obo/uo.owl/unit>
+    
+    
+Class: <http://purl.obolibrary.org/obo/UO_0000106>
+
+    Annotations: 
+        rdfs:isDefinedBy <http://purl.obolibrary.org/obo/uo.owl>,
+        rdfs:label "hertz"
+    
+    SubClassOf: 
+        <http://purl.obolibrary.org/obo/UO_0000105>
+    
+    
+Class: <http://purl.obolibrary.org/obo/UO_0000111>
+
+    Annotations: 
+        rdfs:isDefinedBy <http://purl.obolibrary.org/obo/uo.owl>,
+        rdfs:label "energy unit"
+    
+    SubClassOf: 
+        <http://purl.obolibrary.org/obo/uo.owl/unit>
+    
+    
+Class: <http://purl.obolibrary.org/obo/UO_0000113>
+
+    Annotations: 
+        rdfs:label "power unit"
+    
+    SubClassOf: 
+        <http://purl.obolibrary.org/obo/uo.owl/unit>
+    
+    
+Class: <http://purl.obolibrary.org/obo/UO_0000114>
+
+    Annotations: 
+        rdfs:isDefinedBy <http://purl.obolibrary.org/obo/uo.owl>,
+        rdfs:label "watt"
+    
+    SubClassOf: 
+        <http://purl.obolibrary.org/obo/UO_0000113>
+    
+    
+Class: <http://purl.obolibrary.org/obo/UO_0000223>
+
+    Annotations: 
+        rdfs:isDefinedBy <http://purl.obolibrary.org/obo/uo.owl>,
+        rdfs:label "watt-hour"
+    
+    SubClassOf: 
+        <http://purl.obolibrary.org/obo/UO_0000111>
+    
+    
+Class: <http://purl.obolibrary.org/obo/UO_0000224>
+
+    Annotations: 
+        rdfs:isDefinedBy <http://purl.obolibrary.org/obo/uo.owl>,
+        rdfs:label "kilowatt-hour"
+    
+    SubClassOf: 
+        <http://purl.obolibrary.org/obo/UO_0000111>
+    
+    
+Class: <http://purl.obolibrary.org/obo/UO_0000231>
+
+    Annotations: 
+        rdfs:isDefinedBy <http://purl.obolibrary.org/obo/uo.owl>,
+        rdfs:label "information unit"
+    
+    SubClassOf: 
+        <http://purl.obolibrary.org/obo/uo.owl/unit>
+    
+    
+Class: <http://purl.obolibrary.org/obo/UO_0000232>
+
+    Annotations: 
+        rdfs:isDefinedBy <http://purl.obolibrary.org/obo/uo.owl>,
+        rdfs:label "bit"
+    
+    SubClassOf: 
+        <http://purl.obolibrary.org/obo/UO_0000231>
+    
+    
+Class: <http://purl.obolibrary.org/obo/UO_0000233>
+
+    Annotations: 
+        rdfs:isDefinedBy <http://purl.obolibrary.org/obo/uo.owl>,
+        rdfs:label "byte"
+    
+    SubClassOf: 
+        <http://purl.obolibrary.org/obo/UO_0000231>
+    
+    
+Class: <http://purl.obolibrary.org/obo/UO_0000235>
+
+    Annotations: 
+        rdfs:isDefinedBy <http://purl.obolibrary.org/obo/uo.owl>,
+        rdfs:label "megabyte"
+    
+    SubClassOf: 
+        <http://purl.obolibrary.org/obo/UO_0000231>
+    
+    
+Class: <http://purl.obolibrary.org/obo/UO_0000325>
+
+    Annotations: 
+        rdfs:isDefinedBy <http://purl.obolibrary.org/obo/uo.owl>,
+        rdfs:label "megaHertz"
+    
+    SubClassOf: 
+        <http://purl.obolibrary.org/obo/UO_0000105>
+    
+    
+Class: <http://purl.obolibrary.org/obo/UO_0000331>
+
+    Annotations: 
+        rdfs:isDefinedBy <http://purl.obolibrary.org/obo/uo.owl>,
+        rdfs:label "gigabyte"
+    
+    SubClassOf: 
+        <http://purl.obolibrary.org/obo/UO_0000231>
+    
+    
+Class: <http://purl.obolibrary.org/obo/UO_0000332>
+
+    Annotations: 
+        rdfs:isDefinedBy <http://purl.obolibrary.org/obo/uo.owl>,
+        rdfs:label "terabyte"
+    
+    SubClassOf: 
+        <http://purl.obolibrary.org/obo/UO_0000231>
+    
+    
+Class: <http://purl.obolibrary.org/obo/UO_0010005>
+
+    Annotations: 
+        rdfs:isDefinedBy <http://purl.obolibrary.org/obo/uo.owl>,
+        rdfs:label "millimeters per day"
+    
+    SubClassOf: 
+        <http://purl.obolibrary.org/obo/UO_0000060>
+    
+    
+Class: <http://purl.obolibrary.org/obo/UO_0010008>
+
+    Annotations: 
+        rdfs:isDefinedBy <http://purl.obolibrary.org/obo/uo.owl>,
+        rdfs:label "kilometer per hour"
+    
+    SubClassOf: 
+        <http://purl.obolibrary.org/obo/UO_0000060>
+    
+    
+Class: <http://purl.obolibrary.org/obo/uo.owl/unit>
+
+    Annotations: 
+        rdfs:comment "reused from Units of measurement Ontology"^^xsd:string,
+        rdfs:isDefinedBy <http://purl.obolibrary.org/obo/uo.owl>
+    
+    SubClassOf: 
+        toco:ConceptEntities
+    
+    
+Class: <http://purl.org/vocommons/voaf#Vocabulary>
+
+    
+Class: <http://www.w3.org/2003/01/geo/wgs84_pos#Point>
+
+    Annotations: 
+        rdfs:comment "The relation between something and the point, 
+ or other geometrical thing in space, where it is.  For example, the realtionship between
+ a radio tower and a Point with a given lat and long.
+ Or a relationship between a park and its outline as a closed arc of points, or a road and
+ its location as a arc (a sequence of points).
+ Clearly in practice there will be limit to the accuracy of any such statement, but one would expect
+ an accuracy appropriate for the size of the object and uses such as mapping .",
+        rdfs:isDefinedBy <http://www.w3.org/2003/01/geo/wgs84_pos#>,
+        rdfs:label "location"
+    
+    SubClassOf: 
+        <http://www.w3.org/2003/01/geo/wgs84_pos#SpartialThing>
+    
+    
+Class: <http://www.w3.org/2003/01/geo/wgs84_pos#SpartialThing>
+
+    Annotations: 
+        rdfs:isDefinedBy <http://www.w3.org/2003/01/geo/wgs84_pos#>
+    
+    SubClassOf: 
+        toco:ConceptEntities
+    
+    
+Class: foaf:Person
+
+    Annotations: 
+        rdfs:isDefinedBy <http://xmlns.com/foaf/0.1/>
+    
+    SubClassOf: 
+        toco:ConceptEntities
+    
+    
+Class: om:ObervationAndMeasurement
+
+    Annotations: 
+        rdfs:comment "reused from SenSei Observation And Measurement Ontology (http://purl.oclc.org/net/unis/ontology/sensordata.owl)."^^xsd:string,
+        rdfs:isDefinedBy <http://purl.oclc.org/net/unis/ontology/sensordata.owl>
+    
+    SubClassOf: 
+        toco:ConceptEntities
+    
+    
+Class: toco:AccessPoint
+
+    Annotations: 
+        rdfs:comment "a wireless access point, or more generally just access point (AP), is a networking hardware device that allows a Wi-Fi/Li-Fi device to connect to a wired network. The AP usually connects to a router (via a wired network) as a standalone device, but it can also be an integral component of the router itself. An AP is differentiated from a hotspot, which is the physical location where Wi-Fi access to a WLAN is available."^^xsd:string
+    
+    SubClassOf: 
+        toco:SystemDevice
+    
+    
+Class: toco:Action
+
+    Annotations: 
+        rdfs:comment "the action of a flow defined in OpenFlow protocol"
+    
+    SubClassOf: 
+        toco:ConceptEntities
+    
+    
+Class: toco:Attached
+
+    SubClassOf: 
+        toco:UserDeviceStatus
+    
+    
+Class: toco:AudioService
+
+    SubClassOf: 
+        toco:Service
+    
+    
+Class: toco:AudioSession
+
+    SubClassOf: 
+        toco:Session
+    
+    
+Class: toco:BaseStation
+
+    Annotations: 
+        rdfs:comment "a \"land station in the land mobile service.\" -- according to the International Telecommunication Union's (ITU) Radio Regulations (RR).
+
+it is a transceiver connecting a number of other devices to one another and/or to a wider area. In LTE, it is also known as eNodeB."^^xsd:string
+    
+    SubClassOf: 
+        toco:SystemDevice
+    
+    
+Class: toco:CellularUserEquipment
+
+    Annotations: 
+        rdfs:comment "User deivce in a Cellular network."^^xsd:string
+    
+    SubClassOf: 
+        toco:UserEquipment
+    
+    
+Class: toco:ConceptEntities
+
+    DisjointWith: 
+        toco:PhysicalInfrastructure
+    
+    
+Class: toco:Detached
+
+    SubClassOf: 
+        toco:UserDeviceStatus
+    
+    
+Class: toco:Device
+
+    Annotations: 
+        rdfs:comment "represent all the devices in the physical infrastructure of telecommunciation system. 
+
+According to its user, could be divided into UserDevice and SystemDevice."^^xsd:string
+    
+    SubClassOf: 
+        toco:PhysicalInfrastructure
+    
+    
+Class: toco:Drop
+
+    SubClassOf: 
+        toco:Action
+    
+    
+Class: toco:FileTransferService
+
+    SubClassOf: 
+        toco:Service
+    
+    
+Class: toco:Flow
+
+    Annotations: 
+        rdfs:comment "the flow entry in a flow table inside a switch or route. Defined by OpenFlow protocol."
+    
+    SubClassOf: 
+        toco:ConceptEntities
+    
+    
+Class: toco:Forward
+
+    SubClassOf: 
+        toco:Action
+    
+    
+Class: toco:Host
+
+    Annotations: 
+        rdfs:comment "A host is a computer or other device connected to a computer network. It is a network node that is assigned a network address."^^xsd:string
+    
+    SubClassOf: 
+        toco:UserDevice
+    
+    
+Class: toco:Interface
+
+    SubClassOf: 
+        toco:PhysicalInfrastructure
+    
+    
+Class: toco:LTEAssociation
+
+    Annotations: 
+        rdfs:comment "the electromagnetic wave carring modulated signal between LTE base station, or eNodeB, and user equipment"^^xsd:string
+    
+    SubClassOf: 
+        toco:WirelessAssociation
+    
+    
+Class: toco:LiFiAccessPoint
+
+    Annotations: 
+        rdfs:comment "The access point in Li-Fi network. Li-Fi is a wireless optical networking technology that uses light-emitting diodes (LEDs) for data transmission."^^xsd:string
+    
+    SubClassOf: 
+        toco:AccessPoint
+    
+    
+Class: toco:LiFiAssociation
+
+    Annotations: 
+        rdfs:comment "the visiable light carring modulated signals in Li-Fi network. Transmited and received by LiFi user equipment and LiFi access point."^^xsd:string
+    
+    SubClassOf: 
+        toco:WirelessAssociation
+    
+    
+Class: toco:LiFiUserEquipment
+
+    Annotations: 
+        rdfs:comment "any device used directly by an end-user to communicate. It can be a hand-held telephone, a laptop computer equipped with a mobile broadband adapter, or any other device."^^xsd:string
+    
+    SubClassOf: 
+        toco:UserEquipment
+    
+    
+Class: toco:LiFiWLAN
+
+    Annotations: 
+        rdfs:comment "WLAN interface on the devices in LIFi network, e.g., LiFi user equipment, LiFi access point."^^xsd:string
+    
+    SubClassOf: 
+        toco:WLAN
+    
+    
+Class: toco:Link
+
+    SubClassOf: 
+        toco:PhysicalInfrastructure
+    
+    
+Class: toco:Output
+
+    SubClassOf: 
+        toco:Action
+    
+    
+Class: toco:PathFlow
+
+    SubClassOf: 
+        toco:Flow
+    
+    
+Class: toco:PhysicalInfrastructure
+
+    Annotations: 
+        rdfs:comment "Describe all the physical resources in a telecommunication network system, which is divided into three main modules, namely, device, interface, link. 
+
+Please be reminded the electromagnetic wave (which is the links of all wireless communication netwoks), even if it is invisable, physically exists. Thus, it is also described in the subclass of \"net;PhysicalInfrastructure\"."^^xsd:string
+    
+    DisjointWith: 
+        toco:ConceptEntities
+    
+    
+Class: toco:SatelliteAssociation
+
+    Annotations: 
+        rdfs:comment "the milli-meter electromagnetic wave carring modulated signal between satellite base stations and ground station."^^xsd:string
+    
+    SubClassOf: 
+        toco:WirelessAssociation
+    
+    
+Class: toco:SatelliteGroundStation
+
+    Annotations: 
+        rdfs:comment "used in satellite network. Also known as earth station, or earth terminal, it is a terrestrial radio station designed for extraplanetary telecommunication with spacecraft (constituting part of the ground segment of the spacecraft system), or reception of radio waves from astronomical radio sources. Ground stations may be located either on the surface of the Earth, or in its atmosphere.[1] Earth stations communicate with spacecraft by transmitting and receiving radio waves in the super high frequency or extremely high frequency bands (e.g., microwaves). When a ground station successfully transmits radio waves to a spacecraft (or vice versa), it establishes a telecommunications link. A principal telecommunications device of the ground station is the parabolic antenna."^^xsd:string
+    
+    SubClassOf: 
+        toco:UserEquipment
+    
+    
+Class: toco:SatelliteRelayStation
+
+    Annotations: 
+        rdfs:comment "An artificial satellite, that relays and amplifies radio telecommunications signals via a transponder; it creates a communication channel between a source transmitter and a receiver at different locations on Earth. Communications satellites are used for television, telephone, radio, internet, and military applications."^^xsd:string
+    
+    SubClassOf: 
+        toco:SystemDevice
+    
+    
+Class: toco:Service
+
+    Annotations: 
+        rdfs:comment "a communication service, e.g., voice, video, file uploading/downloading, etc."^^xsd:string
+    
+    SubClassOf: 
+        toco:ConceptEntities
+    
+    
+Class: toco:Session
+
+    SubClassOf: 
+        toco:ConceptEntities
+    
+    
+Class: toco:Switch
+
+    Annotations: 
+        rdfs:comment "A network switch (also called switching hub, bridging hub, officially MAC bridge) is a computer networking device that connects devices together on a computer network by using packet switching to receive, process, and forward data to the destination device."^^xsd:string
+    
+    SubClassOf: 
+        toco:SystemDevice
+    
+    
+Class: toco:SystemDevice
+
+    Annotations: 
+        rdfs:comment "All the physical facilities in the telecommunication system that provide the communication service to uses. For example: base station towers, Wi-Fi access points, switches, servers, etc."^^xsd:string
+    
+    SubClassOf: 
+        toco:Device
+    
+    
+Class: toco:Text
+
+    SubClassOf: 
+        toco:Service
+    
+    
+Class: toco:User
+
+    Annotations: 
+        rdfs:comment "reused from foaf (http://xmlns.com/foaf/0.1/). Represent a user in the telecommunication system."^^xsd:string
+    
+    SubClassOf: 
+        foaf:Person
+    
+    
+Class: toco:UserDevice
+
+    Annotations: 
+        rdfs:comment "User Devices, requiring connectivity services, e.g., phones, tablets, laptops, wearable devices, etc."^^xsd:string
+    
+    SubClassOf: 
+        toco:Device
+    
+    
+Class: toco:UserDeviceStatus
+
+    SubClassOf: 
+        toco:ConceptEntities
+    
+    
+Class: toco:UserEquipment
+
+    Annotations: 
+        rdfs:comment "any device used directly by an end-user to communicate. It can be a hand-held telephone, a laptop computer equipped with a mobile broadband adapter, or any other device."^^xsd:string
+    
+    SubClassOf: 
+        toco:UserDevice
+    
+    
+Class: toco:VideoService
+
+    SubClassOf: 
+        toco:Service
+    
+    
+Class: toco:VideoSession
+
+    SubClassOf: 
+        toco:Session
+    
+    
+Class: toco:WLAN
+
+    Annotations: 
+        rdfs:comment "A wireless local area network (WLAN) interface, also known as WLAN, is the interface of a wireless computer network that links two or more devices using wireless communication within a limited area such as a home, school, computer laboratory, or office building."
+    
+    SubClassOf: 
+        toco:Interface
+    
+    
+Class: toco:WiFiAccessPoint
+
+    Annotations: 
+        rdfs:comment "An access point in a WiFi network"^^xsd:string
+    
+    SubClassOf: 
+        toco:AccessPoint
+    
+    
+Class: toco:WiFiAssociation
+
+    Annotations: 
+        rdfs:comment "the electromagnetic wave carring modulated signal between LTE base station, or eNodeB, and user equipment"^^xsd:string
+    
+    SubClassOf: 
+        toco:WirelessAssociation
+    
+    
+Class: toco:WiFiUserEquipment
+
+    Annotations: 
+        rdfs:comment "a user quipment in Wi-Fi network"^^xsd:string
+    
+    SubClassOf: 
+        toco:UserEquipment
+    
+    
+Class: toco:WiFiWLAN
+
+    Annotations: 
+        rdfs:comment "WLAN interface on the devices in LIFi network, e.g., LiFi user equipment, LiFi access point."^^xsd:string
+    
+    SubClassOf: 
+        toco:WLAN
+    
+    
+Class: toco:WiredLink
+
+    Annotations: 
+        rdfs:comment "wired link through twisted cable, optical fiber, etc."
+    
+    SubClassOf: 
+        toco:Link
+    
+    DisjointWith: 
+        toco:WirelessAssociation
+    
+    
+Class: toco:WirelessAssociation
+
+    Annotations: 
+        rdfs:comment "the electromeganetic radio transmiting through wireless channels in wireless network, carring communication data. Depend on its frequency, it could be visiable light, micro waves, radio waves."^^xsd:string
+    
+    SubClassOf: 
+        toco:Link
+    
+    DisjointWith: 
+        toco:WiredLink
+    
+    
+Class: toco:unReachable
+
+    SubClassOf: 
+        toco:UserDeviceStatus
+    
+    
+Individual: toco:
+
+    Types: 
+        <http://purl.org/vocommons/voaf#Vocabulary>
+    
+    
