@@ -125,7 +125,7 @@ ObjectProperty: <http://www.w3.org/2003/01/geo/wgs84_pos#location>
         cto:Device
     
     Range: 
-        <http://www.w3.org/2003/01/geo/wgs84_pos#SpartialThing>
+        <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing>
     
     
 ObjectProperty: om:hasUnits
@@ -719,17 +719,17 @@ ObjectProperty: cto:hasCoverageArea
         cto:Network
     
     Range: 
-        <http://www.w3.org/2003/01/geo/wgs84_pos#SpartialThing>
+        <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing>
 
     
 DataProperty: <http://www.w3.org/2003/01/geo/wgs84_pos#alt>
 
     Annotations: 
-        rdfs:comment "the altitude of a spartial thing, i.e., a point.",
+        rdfs:comment "the altitude of a spatial thing, i.e., a point.",
         rdfs:isDefinedBy <http://www.w3.org/2003/01/geo/wgs84_pos#>
     
     Domain: 
-        <http://www.w3.org/2003/01/geo/wgs84_pos#SpartialThing>
+        <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing>
     
     Range: 
         xsd:float
@@ -742,7 +742,7 @@ DataProperty: <http://www.w3.org/2003/01/geo/wgs84_pos#lat>
         rdfs:isDefinedBy "the latitude of a point"
     
     Domain: 
-        <http://www.w3.org/2003/01/geo/wgs84_pos#SpartialThing>
+        <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing>
     
     Range: 
         xsd:float
@@ -752,10 +752,10 @@ DataProperty: <http://www.w3.org/2003/01/geo/wgs84_pos#long>
 
     Annotations: 
         rdfs:isDefinedBy <http://www.w3.org/2003/01/geo/wgs84_pos#>,
-        rdfs:isDefinedBy "the longitude of a spartial thing, i.e., a point."
+        rdfs:isDefinedBy "the longitude of a spatial thing, i.e., a point."
     
     Domain: 
-        <http://www.w3.org/2003/01/geo/wgs84_pos#SpartialThing>
+        <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing>
     
     Range: 
         xsd:float
@@ -1800,10 +1800,10 @@ Class: <http://www.w3.org/2003/01/geo/wgs84_pos#Point>
         rdfs:label "location"
     
     SubClassOf: 
-        <http://www.w3.org/2003/01/geo/wgs84_pos#SpartialThing>
+        <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing>
     
     
-Class: <http://www.w3.org/2003/01/geo/wgs84_pos#SpartialThing>
+Class: <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing>
 
     Annotations: 
         rdfs:isDefinedBy <http://www.w3.org/2003/01/geo/wgs84_pos#>
