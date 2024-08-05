@@ -125,7 +125,7 @@ ObjectProperty: <http://www.w3.org/2003/01/geo/wgs84_pos#location>
         cto:Device
     
     Range: 
-        <http://www.w3.org/2003/01/geo/wgs84_pos#SpartialThing>
+        <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing>
     
     
 ObjectProperty: om:hasUnits
@@ -642,16 +642,94 @@ ObjectProperty: cto:to
     
     Range: 
         cto:Interface
+
+
+ObjectProperty: cto:hasRetailer
+
+    Annotations: 
+        rdfs:comment "for broadband operators, the reselling organisation selling this operator's services"
     
+    Domain: 
+        cto:NetworkOperator
+    
+    Range: 
+        cto:ISP
+
+    InverseOf: 
+        cto:hasWholesaler
+    
+
+ObjectProperty: cto:hasWholesaler
+
+    Annotations: 
+        rdfs:comment "for broadband ISPs, the organisation whose network it is selling over"
+    
+    Domain: 
+        cto:ISP
+    
+    Range: 
+        cto:NetworkOperator
+
+    InverseOf: 
+        cto:hasRetailer
+    
+
+ObjectProperty: cto:ownsNetwork
+
+    Annotations: 
+        rdfs:comment "network owned and operated by a network operator"
+    
+    Domain: 
+        cto:NetworkOperator
+    
+    Range: 
+        cto:Network
+
+
+ObjectProperty: cto:usesNetwork
+
+    Annotations: 
+        rdfs:comment "the network an ISP utilises to sell its services over"
+    
+    Domain: 
+        cto:ISP
+    
+    Range: 
+        cto:Network
+
+
+ObjectProperty: cto:usesLink
+
+    Annotations: 
+        rdfs:comment "type of link infrastructure utilised by telecoms network"
+    
+    Domain: 
+        cto:Network
+    
+    Range: 
+        cto:Link
+
+
+ObjectProperty: cto:hasCoverageArea
+
+    Annotations: 
+        rdfs:comment "areas covered by a network"
+    
+    Domain: 
+        cto:Network
+    
+    Range: 
+        <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing>
+
     
 DataProperty: <http://www.w3.org/2003/01/geo/wgs84_pos#alt>
 
     Annotations: 
-        rdfs:comment "the altitude of a spartial thing, i.e., a point.",
+        rdfs:comment "the altitude of a spatial thing, i.e., a point.",
         rdfs:isDefinedBy <http://www.w3.org/2003/01/geo/wgs84_pos#>
     
     Domain: 
-        <http://www.w3.org/2003/01/geo/wgs84_pos#SpartialThing>
+        <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing>
     
     Range: 
         xsd:float
@@ -664,7 +742,7 @@ DataProperty: <http://www.w3.org/2003/01/geo/wgs84_pos#lat>
         rdfs:isDefinedBy "the latitude of a point"
     
     Domain: 
-        <http://www.w3.org/2003/01/geo/wgs84_pos#SpartialThing>
+        <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing>
     
     Range: 
         xsd:float
@@ -674,10 +752,10 @@ DataProperty: <http://www.w3.org/2003/01/geo/wgs84_pos#long>
 
     Annotations: 
         rdfs:isDefinedBy <http://www.w3.org/2003/01/geo/wgs84_pos#>,
-        rdfs:isDefinedBy "the longitude of a spartial thing, i.e., a point."
+        rdfs:isDefinedBy "the longitude of a spatial thing, i.e., a point."
     
     Domain: 
-        <http://www.w3.org/2003/01/geo/wgs84_pos#SpartialThing>
+        <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing>
     
     Range: 
         xsd:float
@@ -1352,7 +1430,31 @@ DataProperty: cto:toPort
     Range: 
         xsd:string
     
+
+DataProperty: cto:isWholesaler
+
+    Annotations: 
+        rdfs:comment "a network operator which does not offer services to end-users directly, but instead to ISPs, which then sell it on to end-users"
     
+    Domain: 
+        cto:NetworkOperator
+    
+    Range: 
+        xsd:boolean
+
+
+DataProperty: cto:isRetailer
+
+    Annotations: 
+        rdfs:comment "an ISP which does not control its own service infrastructure, but uses that of another organisation"
+    
+    Domain: 
+        cto:ISP
+    
+    Range: 
+        xsd:boolean
+
+
 Class: <http://purl.obolibrary.org/obo/UO_0000001>
 
     Annotations: 
@@ -1698,10 +1800,10 @@ Class: <http://www.w3.org/2003/01/geo/wgs84_pos#Point>
         rdfs:label "location"
     
     SubClassOf: 
-        <http://www.w3.org/2003/01/geo/wgs84_pos#SpartialThing>
+        <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing>
     
     
-Class: <http://www.w3.org/2003/01/geo/wgs84_pos#SpartialThing>
+Class: <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing>
 
     Annotations: 
         rdfs:isDefinedBy <http://www.w3.org/2003/01/geo/wgs84_pos#>
@@ -1718,7 +1820,49 @@ Class: foaf:Person
     SubClassOf: 
         cto:PhysicalEntities
     
+    DisjointWith: 
+        foaf:Organization
+
+
+Class: foaf:Organization
+
+    Annotations: 
+        rdfs:isDefinedBy <http://xmlns.com/foaf/0.1/>
     
+    SubClassOf: 
+        cto:PhysicalEntities
+
+    DisjointWith: 
+        foaf:Person
+
+
+Class: cto:NonTelcoOrganization
+
+    Annotations: 
+        rdfs:comment "organization outside the telecommunication industry, e.g. holding companies"
+    
+    SubClassOf: 
+        foaf:Organization
+
+
+Class: cto:NetworkOperator
+
+    Annotations: 
+        rdfs:comment "telecommunications operator that manages its own network"
+    
+    SubClassOf: 
+        foaf:Organization
+
+
+Class: cto:ISP
+
+    Annotations: 
+        rdfs:comment "internet service provider that provides services to end-users"
+    
+    SubClassOf: 
+        cto:NetworkOperator
+
+
 Class: om:ObervationAndMeasurement
 
     Annotations: 
@@ -1904,6 +2048,12 @@ Class: cto:LiFiWLAN
 Class: cto:Link
 
     SubClassOf: 
+        cto:Network
+
+
+Class: cto:Network
+
+    SubClassOf: 
         cto:PhysicalInfrastructure
     
     
@@ -1922,7 +2072,7 @@ Class: cto:PathFlow
 Class: cto:PhysicalInfrastructure
 
     Annotations: 
-        rdfs:comment "Describe all the physical resources in a telecommunication network system, which is divided into three main modules, namely, device, interface, link. 
+        rdfs:comment "Describe all the physical resources in a telecommunication network system, which is divided into three main modules, namely, device, interface, link (under network). 
 
 Please be reminded the electromagnetic wave (which is the links of all wireless communication netwoks), even if it is invisable, physically exists. Thus, it is also described in the subclass of \"net;PhysicalInfrastructure\"."^^xsd:string
     
