@@ -1716,7 +1716,7 @@ Class: foaf:Person
         rdfs:isDefinedBy <http://xmlns.com/foaf/0.1/>
     
     SubClassOf: 
-        cto:ConceptEntities
+        cto:PhysicalEntities
     
     
 Class: om:ObervationAndMeasurement
@@ -1788,7 +1788,13 @@ Class: cto:CellularUserEquipment
 Class: cto:ConceptEntities
 
     DisjointWith: 
-        cto:PhysicalInfrastructure
+        cto:PhysicalEntities
+
+
+Class: cto:PhysicalEntities
+
+    DisjointWith: 
+        cto:ConceptEntities
     
     
 Class: cto:Detached
@@ -1922,6 +1928,9 @@ Please be reminded the electromagnetic wave (which is the links of all wireless 
     
     DisjointWith: 
         cto:ConceptEntities
+
+    SubClassOf:
+        cto:PhysicalEntities
     
     
 Class: cto:SatelliteAssociation
