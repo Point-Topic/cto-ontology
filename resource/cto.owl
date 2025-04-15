@@ -3,16 +3,16 @@ Prefix: cc: <http://creativecommons.org/ns#>
 Prefix: dc: <http://purl.org/dc/terms/>
 Prefix: foaf: <http://xmlns.com/foaf/0.1/>
 Prefix: geo: <http://www.w3.org/2003/01/geo/wgs84_pos/>
-Prefix: om: <http://purl.oclc.org/net/unis/ontology/sensordata.owl/>
+Prefix: om: <https://bioportal.bioontology.org/ontologies/UO>
 Prefix: owl: <http://www.w3.org/2002/07/owl#>
 Prefix: rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 Prefix: rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 Prefix: time: <http://www.w3.org/2006/time#>
 Prefix: cto: <https://github.com/Point-Topic/cto-ontology/>
-Prefix: units: <https://sweet.jpl.nasa.gov/>
 Prefix: vann: <http://purl.org/vacob/vann/>
 Prefix: xml: <http://www.w3.org/XML/1998/namespace>
 Prefix: xsd: <http://www.w3.org/2001/XMLSchema#>
+Prefix: qudt: <http://qudt.org/3.1.0/schema/qudt>
 
 
 
@@ -1505,6 +1505,39 @@ Class: <http://purl.obolibrary.org/obo/uo.owl/unit>
     
     SubClassOf: 
         cto:ConceptEntities
+
+
+Class: qudt:DerivedUnit
+
+    Annotations:
+        rdfs:comment "A Derived Unit is a type specification for units that are derived from other units. Reused from QUDT ontology"^^xsd:string,
+        rdfs:isDefinedBy <http://qudt.org/3.0.0/schema/qudt>,
+        rdfs:label "derived unit"
+
+    SubClassOf:
+        <http://purl.obolibrary.org/obo/uo.owl/unit>
+
+
+Class: qudt:MegaBIT-PER-SEC
+
+    Annotations:
+        rdfs:comment "A megabit per second (Mbit/s or Mb/s; not to be confused with mbit/s which means millibit per second, or with Mbitps which means megabit picosecond) is a unit of data transfer rate equal to 1,000,000 bits per second or 1,000 kilobits per second or 125,000 bytes per second or 125 kilobytes per second."^^xsd:string,
+        rdfs:isDefinedBy <http://qudt.org/3.1.0/vocab/unit>,
+        rdfs:label "megabit per second"
+    
+    SubClassOf:
+        qudt:DerivedUnit
+
+
+Class: qudt:GigaBIT-PER-SEC
+
+    Annotations:
+        rdfs:comment "A gigabit per second (Gbit/s or Gb/s) is a unit of data transfer rate equal to 1,000,000,000 bits per second."^^xsd:string,
+        rdfs:isDefinedBy <http://qudt.org/3.1.0/vocab/unit>,
+        rdfs:label "gigabit per second"
+    
+    SubClassOf:
+        qudt:DerivedUnit
     
     
 Class: <http://purl.org/vocommons/voaf#Vocabulary>
