@@ -1855,12 +1855,6 @@ Class: cto:SystemDevice
         cto:Device
     
     
-Class: cto:Text
-
-    SubClassOf: 
-        cto:Service
-    
-    
 Class: cto:User
 
     Annotations: 
@@ -2051,4 +2045,151 @@ Class: cto:gfast
     
     SubClassOf: 
         cto:WiredLink
+
+
+Class: cto:BroadbandService
+
+    Annotations: 
+        rdfs:comment "Broadband services provided to a fixed location associated with an address, including FTTX, ADSL services."
+    
+    SubClassOf: 
+        cto:Service
+
+
+Class: cto:CellularService
+
+    Annotations: 
+        rdfs:comment "Cellular services of all kinds, including data and voice, provided to mobile phones etc."
+    
+    SubClassOf: 
+        cto:Service
+
+
+ObjectProperty: cto:offersService
+
+    Annotations: 
+        rdfs:comment "Service offered to end users by an organisation."
+    
+    Range: 
+        cto:Service
+
+
+DataProperty: cto:service_name
+
+    Annotations: 
+        rdfs:comment "The name of the service offer."
+    
+    Domain: 
+        cto:Service
+    
+    Range: 
+        xsd:string
+
+
+DataProperty: cto:listed_down
+
+    Annotations: 
+        rdfs:comment "The advertised download speed of the broadband service."
+    
+    Domain: 
+        cto:BroadbandService
+    
+    Range: 
+        xsd:string
+
+
+DataProperty: cto:listed_up
+
+    Annotations: 
+        rdfs:comment "The advertised upload speed of the broadband service."
+    
+    Domain: 
+        cto:BroadbandService
+    
+    Range: 
+        xsd:string
+
+
+DataProperty: cto:guaranteed_up
+
+    Annotations: 
+        rdfs:comment "The guaranteed minimum upload speed of the broadband service."
+    
+    Domain: 
+        cto:BroadbandService
+    
+    Range: 
+        xsd:string
+
+
+DataProperty: cto:guaranteed_down
+
+    Annotations: 
+        rdfs:comment "The guaranteed minimum download speed of the broadband service."
+    
+    Domain: 
+        cto:BroadbandService
+    
+    Range: 
+        xsd:string
+
+
+DataProperty: cto:monthly_cost
+
+    Annotations: 
+        rdfs:comment "The monthly cost of the service."
+    
+    Domain: 
+        cto:Service
+    
+    Range: 
+        xsd:float
+
+
+DataProperty: cto:setup_cost
+
+    Annotations: 
+        rdfs:comment "The setup/installation cost of the broadband service."
+    
+    Domain: 
+        cto:BroadbandService
+    
+    Range: 
+        xsd:float
+
+
+DataProperty: cto:bundle_home_phone
+
+    Annotations: 
+        rdfs:comment "Whether the broadband service includes a home phone bundle."
+    
+    Domain: 
+        cto:BroadbandService
+    
+    Range: 
+        xsd:boolean
+
+
+DataProperty: cto:bundle_mobile_phone
+
+    Annotations: 
+        rdfs:comment "Whether the broadband service includes a mobile phone bundle."
+    
+    Domain: 
+        cto:BroadbandService
+    
+    Range: 
+        xsd:boolean
+
+
+DataProperty: cto:bundle_video
+
+    Annotations: 
+        rdfs:comment "Whether the broadband service includes a video/TV bundle."
+    
+    Domain: 
+        cto:BroadbandService
+    
+    Range: 
+        xsd:boolean
 
