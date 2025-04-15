@@ -249,19 +249,6 @@ ObjectProperty: cto:hasDevice
         cto:belongsTo
     
     
-ObjectProperty: cto:hasDistance
-
-    Annotations: 
-        rdfs:comment "the Euclidean distance between the LiFi user equipment and access point."^^xsd:string,
-        rdfs:isDefinedBy <https://github.com/Point-Topic/cto-ontology/>
-    
-    SubPropertyOf: 
-        cto:hasLiFiAssociationProperty
-    
-    Domain: 
-        cto:LiFiAssociation
-    
-    
 ObjectProperty: cto:hasFlow
 
     Annotations: 
@@ -284,19 +271,6 @@ ObjectProperty: cto:hasFlowAction
     
     Range: 
         cto:Action
-    
-    
-ObjectProperty: cto:hasIncidentAngle
-
-    Annotations: 
-        rdfs:comment "The angle of incidence of the LED receiver on LiFi user equipment, which is the angle between the visiable light ray incident on a surface and the line perpendicular to the surface at the point of incidence, called the normal."^^xsd:string,
-        rdfs:isDefinedBy <https://github.com/Point-Topic/cto-ontology/>
-    
-    SubPropertyOf: 
-        cto:hasLiFiAssociationProperty
-    
-    Domain: 
-        cto:LiFiAssociation
     
     
 ObjectProperty: cto:hasInterface
@@ -322,42 +296,6 @@ ObjectProperty: cto:hasLTEAssociation
     
     Range: 
         cto:LTEAssociation
-    
-    
-ObjectProperty: cto:hasLiFiAssociation
-
-    SubPropertyOf: 
-        cto:hasWirelessAssociation
-    
-    Domain: 
-        cto:LiFiWLAN
-    
-    Range: 
-        cto:LiFiAssociation
-    
-    
-ObjectProperty: cto:hasLiFiAssociationProperty
-
-    Annotations: 
-        rdfs:comment "The properties of the visiable light association between the LED on LiFi access point and LiFi user equipment."^^xsd:string
-    
-    SubPropertyOf: 
-        cto:hasWirelessLinkProperty
-    
-    Domain: 
-        cto:LiFiAssociation
-    
-    
-ObjectProperty: cto:hasLiFiWLAN
-
-    SubPropertyOf: 
-        cto:hasWLAN
-    
-    Domain: 
-        cto:Device
-    
-    Range: 
-        cto:LiFiWLAN
     
     
 ObjectProperty: cto:hasLink
@@ -391,20 +329,7 @@ ObjectProperty: cto:hasPort
     
     Range: 
         cto:Interface
-    
-    
-ObjectProperty: cto:hasRadianceAngle
 
-    Annotations: 
-        rdfs:comment "the radiance angle of the light ray transmitted from LED on LiFi access point."^^xsd:string,
-        rdfs:isDefinedBy <https://github.com/Point-Topic/cto-ontology/>
-    
-    SubPropertyOf: 
-        cto:hasLiFiAssociationProperty
-    
-    Domain: 
-        cto:LiFiAssociation
-    
     
 ObjectProperty: cto:hasRoundTripTime
 
@@ -962,16 +887,6 @@ DataProperty: cto:hasAntennaHeight
         xsd:float
     
     
-DataProperty: cto:hasDistance
-
-    Annotations: 
-        rdfs:comment "the Euclidean distance between the LiFi user equipment and access point."^^xsd:string,
-        rdfs:isDefinedBy <https://github.com/Point-Topic/cto-ontology/>
-    
-    Range: 
-        xsd:float
-    
-    
 DataProperty: cto:hasErrorCode
 
     Annotations: 
@@ -985,84 +900,12 @@ DataProperty: cto:hasErrorCode
         xsd:string
     
     
-DataProperty: cto:hasFieldOfView
-
-    Annotations: 
-        rdfs:comment "Field of view (FOV) is the open observable area where a LiFi user equipment could receive visiable light signal. It is defined by let the incident angle of the LiFi user equipment equals to Pi/2.
-
-If the incident angle larger than Pi/2, the light ray is out of the FOV, thus cannot be received by the LiFi user equipment."^^xsd:string,
-        rdfs:isDefinedBy <https://github.com/Point-Topic/cto-ontology/>
-    
-    Domain: 
-        cto:LiFiUserEquipment
-    
-    Range: 
-        xsd:float
-    
-    SubPropertyOf: 
-        cto:hasLiFiUserEquipmentProperty
-    
-    
 DataProperty: cto:hasFlowProperty
 
     Annotations: 
         rdfs:isDefinedBy <https://github.com/Point-Topic/cto-ontology/>
     
-    
-DataProperty: cto:hasGainOfConcentrator
 
-    Annotations: 
-        rdfs:comment "The gain of the concentrator on the LiFi user equipment, usually equals to 1."^^xsd:string,
-        rdfs:isDefinedBy <https://github.com/Point-Topic/cto-ontology/>
-    
-    Domain: 
-        cto:LiFiUserEquipment
-    
-    Range: 
-        xsd:float
-    
-    SubPropertyOf: 
-        cto:hasLiFiUserEquipmentProperty
-    
-    
-DataProperty: cto:hasGainofOpticalFilter
-
-    Annotations: 
-        rdfs:comment "Gain of optical filter on LiFi access point."^^xsd:string,
-        rdfs:isDefinedBy <https://github.com/Point-Topic/cto-ontology/>
-    
-    Domain: 
-        cto:LiFiAccessPoint
-    
-    Range: 
-        xsd:float
-    
-    SubPropertyOf: 
-        cto:hasLiFiAccessPointProperty
-    
-    
-DataProperty: cto:hasHalfIntensityAngle
-
-    Annotations: 
-        rdfs:comment "The angle of half intensity of the LED light transmiting visible light signal in a LiFi access point. 
-
-A fixed value. It is the angle where the radiated intensity will be half as intense as it would be at 0 degrees, or pointing straight ahead.
-
-Factors that contribute to the angle of half intensity include the amount of diffusing material in the epoxy, the shape of the reflector cup which surrounds the LED chip, the shape of the LED lens, the distance from the LED to the tip of the lens, and the type of emitter chip.
-
-The most common value is Pi/3."^^xsd:string,
-        rdfs:isDefinedBy <https://github.com/Point-Topic/cto-ontology/>
-    
-    Domain: 
-        cto:LiFiAccessPoint
-    
-    Range: 
-        xsd:float
-    
-    SubPropertyOf: 
-        cto:hasLiFiAccessPointProperty
-    
-    
 DataProperty: cto:hasIP
 
     Annotations: 
@@ -1074,16 +917,6 @@ DataProperty: cto:hasIP
     
     Range: 
         xsd:string
-    
-    
-DataProperty: cto:hasIncidentAngle
-
-    Annotations: 
-        rdfs:comment "The angle of incidence of the LED receiver on LiFi user equipment, which is the angle between the visiable light ray incident on a surface and the line perpendicular to the surface at the point of incidence, called the normal."^^xsd:string,
-        rdfs:isDefinedBy <https://github.com/Point-Topic/cto-ontology/>
-    
-    Range: 
-        xsd:float
     
     
 DataProperty: cto:hasInterfaceName
@@ -1111,51 +944,7 @@ DataProperty: cto:hasJoinDate
     Range: 
         xsd:dateTime
     
-    
-DataProperty: cto:hasLiFiAccessPointProperty
 
-    Annotations: 
-        rdfs:comment "datatype properties dedicated for LiFi access points"^^xsd:string,
-        rdfs:isDefinedBy <https://github.com/Point-Topic/cto-ontology/>
-    
-    Domain: 
-        cto:LiFiAccessPoint
-    
-    Range: 
-        xsd:float
-    
-    
-DataProperty: cto:hasLiFiAssociationProperty
-
-    Annotations: 
-        rdfs:comment "The properties of the visiable light association between the LED on LiFi access point and LiFi user equipment."^^xsd:string
-    
-    Range: 
-        xsd:float
-    
-    
-DataProperty: cto:hasLiFiUserEquipmentProperty
-
-    Annotations: 
-        rdfs:comment "properties of LiFi user equipments."^^xsd:string,
-        rdfs:isDefinedBy <https://github.com/Point-Topic/cto-ontology/>
-    
-    Domain: 
-        cto:LiFiUserEquipment
-    
-    Range: 
-        xsd:float
-    
-    
-DataProperty: cto:hasLinkProperty
-
-    Annotations: 
-        rdfs:isDefinedBy <https://github.com/Point-Topic/cto-ontology/>
-    
-    Range: 
-        xsd:float
-    
-    
 DataProperty: cto:hasMAC
 
     Annotations: 
@@ -1169,22 +958,6 @@ DataProperty: cto:hasMAC
         xsd:string
     
     
-DataProperty: cto:hasOpticalTransmittedPower
-
-    Annotations: 
-        rdfs:comment "the transmitted power of the LED on the LiFi access point"^^xsd:string,
-        rdfs:isDefinedBy <https://github.com/Point-Topic/cto-ontology/>
-    
-    Domain: 
-        cto:LiFiAccessPoint
-    
-    Range: 
-        xsd:float
-    
-    SubPropertyOf: 
-        cto:hasLiFiAccessPointProperty
-    
-    
 DataProperty: cto:hasPacketLoss
 
     Annotations: 
@@ -1196,31 +969,6 @@ DataProperty: cto:hasPacketLoss
     
     Range: 
         xsd:float
-    
-    
-DataProperty: cto:hasRadianceAngle
-
-    Annotations: 
-        rdfs:comment "the radiance angle of the light ray transmitted from LED on LiFi access point."^^xsd:string,
-        rdfs:isDefinedBy <https://github.com/Point-Topic/cto-ontology/>
-    
-    Range: 
-        xsd:float
-    
-    
-DataProperty: cto:hasRespansivity
-
-    Annotations: 
-        rdfs:isDefinedBy <https://github.com/Point-Topic/cto-ontology/>
-    
-    Domain: 
-        cto:LiFiAccessPoint
-    
-    Range: 
-        xsd:float
-    
-    SubPropertyOf: 
-        cto:hasLiFiAccessPointProperty
     
     
 DataProperty: cto:hasServiceEndTime
@@ -1903,12 +1651,6 @@ Class: cto:AudioService
         cto:Service
     
     
-Class: cto:AudioSession
-
-    SubClassOf: 
-        cto:Session
-    
-    
 Class: cto:BaseStation
 
     Annotations: 
@@ -2009,42 +1751,6 @@ Class: cto:LTEAssociation
         cto:WirelessAssociation
     
     
-Class: cto:LiFiAccessPoint
-
-    Annotations: 
-        rdfs:comment "The access point in Li-Fi network. Li-Fi is a wireless optical networking technology that uses light-emitting diodes (LEDs) for data transmission."^^xsd:string
-    
-    SubClassOf: 
-        cto:AccessPoint
-    
-    
-Class: cto:LiFiAssociation
-
-    Annotations: 
-        rdfs:comment "the visiable light carring modulated signals in Li-Fi network. Transmited and received by LiFi user equipment and LiFi access point."^^xsd:string
-    
-    SubClassOf: 
-        cto:WirelessAssociation
-    
-    
-Class: cto:LiFiUserEquipment
-
-    Annotations: 
-        rdfs:comment "any device used directly by an end-user to communicate. It can be a hand-held telephone, a laptop computer equipped with a mobile broadband adapter, or any other device."^^xsd:string
-    
-    SubClassOf: 
-        cto:UserEquipment
-    
-    
-Class: cto:LiFiWLAN
-
-    Annotations: 
-        rdfs:comment "WLAN interface on the devices in LIFi network, e.g., LiFi user equipment, LiFi access point."^^xsd:string
-    
-    SubClassOf: 
-        cto:WLAN
-    
-    
 Class: cto:Link
 
     SubClassOf: 
@@ -2119,12 +1825,6 @@ Class: cto:Service
         cto:ConceptEntities
     
     
-Class: cto:Session
-
-    SubClassOf: 
-        cto:ConceptEntities
-    
-    
 Class: cto:Switch
 
     Annotations: 
@@ -2186,12 +1886,6 @@ Class: cto:VideoService
 
     SubClassOf: 
         cto:Service
-    
-    
-Class: cto:VideoSession
-
-    SubClassOf: 
-        cto:Session
     
     
 Class: cto:WLAN
