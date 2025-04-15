@@ -448,30 +448,6 @@ ObjectProperty: cto:hasWLAN
         cto:WLAN
     
     
-ObjectProperty: cto:hasWiFiAssociation
-
-    SubPropertyOf: 
-        cto:hasWirelessAssociation
-    
-    Domain: 
-        cto:WiFiWLAN
-    
-    Range: 
-        cto:WiFiAssociation
-    
-    
-ObjectProperty: cto:hasWiFiWLAN
-
-    SubPropertyOf: 
-        cto:hasWLAN
-    
-    Domain: 
-        cto:Device
-    
-    Range: 
-        cto:WiFiWLAN
-    
-    
 ObjectProperty: cto:hasWiredLink
 
     SubPropertyOf: 
@@ -530,7 +506,7 @@ ObjectProperty: cto:isIn
 ObjectProperty: cto:range
 
     Annotations: 
-        rdfs:comment "the signal range of wireless devices, such as WiFi access point, LiFi access point, WiFi mobile station, and LiFi mobile station."^^xsd:string,
+        rdfs:comment "the signal range of wireless devices, such as WiFi access point and WiFi mobile station."^^xsd:string,
         rdfs:isDefinedBy <https://github.com/Point-Topic/cto-ontology/>
     
     Domain: 
@@ -543,7 +519,7 @@ ObjectProperty: cto:range
 ObjectProperty: cto:stationsInRange
 
     Annotations: 
-        rdfs:comment "in wireless networks (WiFi/LiFi), the mobile stations in the range of the access points."^^xsd:string,
+        rdfs:comment "in wireless networks (WiFi), the mobile stations in the range of the access points."^^xsd:string,
         rdfs:isDefinedBy <https://github.com/Point-Topic/cto-ontology/>
     
     Domain: 
@@ -1750,7 +1726,7 @@ Class: cto:LTEAssociation
     SubClassOf: 
         cto:WirelessAssociation
     
-    
+
 Class: cto:Link
 
     SubClassOf: 
@@ -1922,15 +1898,6 @@ Class: cto:WiFiUserEquipment
     
     SubClassOf: 
         cto:UserEquipment
-    
-    
-Class: cto:WiFiWLAN
-
-    Annotations: 
-        rdfs:comment "WLAN interface on the devices in LIFi network, e.g., LiFi user equipment, LiFi access point."^^xsd:string
-    
-    SubClassOf: 
-        cto:WLAN
     
     
 Class: cto:WiredLink
