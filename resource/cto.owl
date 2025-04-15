@@ -450,6 +450,9 @@ ObjectProperty: cto:hasWLAN
     
 ObjectProperty: cto:hasWiredLink
 
+    Annotations: 
+        rdfs:comment "wired link through twisted cable, optical fiber, etc."
+    
     SubPropertyOf: 
         cto:hasLink
     
@@ -1968,4 +1971,84 @@ Individual: cto:
     Types: 
         <http://purl.org/vocommons/voaf#Vocabulary>
     
+
+Class: cto:adsl
+
+    Annotations: 
+        rdfs:comment "Asymmetric Digital Subscriber Line - a type of DSL broadband technology that uses existing telephone lines to transmit data with faster download than upload speeds."
     
+    SubClassOf: 
+        cto:WiredLink
+
+
+Class: cto:cable
+
+    Annotations: 
+        rdfs:comment "Cable broadband connection that uses coaxial cable television infrastructure to provide internet access."
+    
+    SubClassOf: 
+        cto:WiredLink
+
+
+Class: cto:dialup
+
+    Annotations: 
+        rdfs:comment "Dial-up internet access that uses the facilities of the public switched telephone network (PSTN) to establish a connection to an ISP via telephone lines."
+    
+    SubClassOf: 
+        cto:WiredLink
+
+
+Class: cto:docsis_3
+
+    Annotations: 
+        rdfs:comment "Data Over Cable Service Interface Specification version 3.0 - a cable broadband standard that enables high-bandwidth data transfer."
+    
+    SubClassOf: 
+        cto:cable
+
+
+Class: cto:docsis_31
+
+    Annotations: 
+        rdfs:comment "Data Over Cable Service Interface Specification version 3.1 - an improved cable broadband standard with higher capacity than DOCSIS 3.0."
+    
+    SubClassOf: 
+        cto:cable
+
+
+Class: cto:docsis_4
+
+    Annotations: 
+        rdfs:comment "Data Over Cable Service Interface Specification version 4.0 - the latest cable broadband standard with significantly increased capacity and speeds."
+    
+    SubClassOf: 
+        cto:cable
+
+
+Class: cto:fttc
+
+    Annotations: 
+        rdfs:comment "Fiber to the Cabinet - a broadband connection where fiber optic cables run to a street cabinet, with the final connection to the premises using copper cables."
+    
+    SubClassOf: 
+        cto:WiredLink
+
+
+Class: cto:fttp
+
+    Annotations: 
+        rdfs:comment "Fiber to the Premises - a pure fiber optic connection running directly to homes or businesses, providing the highest available broadband speeds."
+    
+    SubClassOf: 
+        cto:WiredLink
+
+
+Class: cto:gfast
+
+    Annotations: 
+        rdfs:comment "G.fast - a digital subscriber line (DSL) protocol standard for local loops shorter than 500 m, offering speeds higher than VDSL2."
+    
+    SubClassOf: 
+        cto:WiredLink
+
