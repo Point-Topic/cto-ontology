@@ -1,0 +1,71 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix cto: <https://github.com/Point-Topic/cto-ontology/> .
+@prefix dcat: <https://www.w3.org/TR/vocab-dcat-3/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ex: <https://example.org/> .
+
+# Organization
+ex:point_topic a foaf:Organization ;
+    rdfs:label "Point Topic" ;
+    rdfs:comment "Telecommunications market research and analysis company" .
+
+# Catalog
+ex:broadband_data a dcat:Catalog ;
+    rdfs:label "Broadband Data Catalog" ;
+    dcterms:title "Global Broadband Statistics" ;
+    dcterms:description "A comprehensive catalog of broadband deployment and subscription data worldwide" ;
+    dcterms:publisher ex:point_topic ;
+    dcat:record ex:fttx_dataset_record ;
+    dcat:geographicalCoverage ex:global .
+
+# Catalog Record
+ex:fttx_dataset_record a dcat:CatalogRecord ;
+    rdfs:label "FTTX Dataset Record" ;
+    dcterms:issued "2023-01-15"^^xsd:date ;
+    dcterms:modified "2023-06-30"^^xsd:date ;
+    foaf:primaryTopic ex:fttx_deployment .
+
+# Dataset
+ex:fttx_deployment a dcat:Dataset ;
+    rdfs:label "FTTX Deployment Dataset" ;
+    dcterms:title "Global FTTX Deployment Statistics" ;
+    dcterms:description "Dataset containing fiber-to-the-x deployment statistics across countries and regions" ;
+    dcterms:publisher ex:point_topic ;
+    foaf:primaryTopic ex:point_topic ;
+    dcat:inSeries ex:broadband_statistics .
+
+# Dataset Series
+ex:broadband_statistics a dcat:DatasetSeries ;
+    rdfs:label "Broadband Statistics Series" ;
+    dcterms:title "Quarterly Broadband Statistics" ;
+    dcterms:description "A series of datasets tracking broadband deployment and subscriptions published quarterly" .
+
+# Data Service
+ex:broadband_api a dcat:DataService ;
+    rdfs:label "Broadband Statistics API" ;
+    dcterms:title "Broadband Data API" ;
+    dcterms:description "RESTful API providing access to broadband statistics" ;
+    dcterms:publisher ex:point_topic ;
+    dcat:servesDataset ex:fttx_deployment .
+
+# Location
+ex:global a dcterms:Location ;
+    rdfs:label "Global" ;
+    rdfs:comment "Worldwide coverage" .
+
+# ISP Example
+ex:vodafone a cto:ISP ;
+    rdfs:label "Vodafone" ;
+    cto:offersService ex:vodafone_gigafast .
+
+# Broadband Service
+ex:vodafone_gigafast a cto:BroadbandService ;
+    rdfs:label "Vodafone Gigafast" ;
+    cto:service_name "Gigafast Broadband" ;
+    cto:listed_down "900 Mbps" ;
+    cto:listed_up "90 Mbps" ;
+    cto:monthly_cost "45.00"^^xsd:float . 

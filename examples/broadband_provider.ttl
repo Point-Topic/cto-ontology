@@ -1,0 +1,51 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix cto: <https://github.com/Point-Topic/cto-ontology/> .
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix qudt: <http://qudt.org/3.1.0/schema/qudt> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ex: <https://example.org/> .
+
+# Network Operator
+ex:openreach a cto:NetworkOperator ;
+    rdfs:label "Openreach" ;
+    cto:isWholesaler "true"^^xsd:boolean ;
+    cto:ownsNetwork ex:openreach_fttp .
+
+# Network
+ex:openreach_fttp a cto:Network ;
+    rdfs:label "Openreach FTTP Network" ;
+    cto:usesLink ex:fttp_link ;
+    cto:hasCoverageArea ex:london .
+
+# Link Type
+ex:fttp_link a cto:fttp ;
+    rdfs:label "fttp" .
+
+# ISP
+ex:skybroadband a cto:ISP ;
+    rdfs:label "Sky Broadband" ;
+    cto:hasWholesaler ex:openreach ;
+    cto:usesNetwork ex:openreach_fttp ;
+    cto:offersService ex:sky_ultrafast .
+
+# Broadband Service
+ex:sky_ultrafast a cto:BroadbandService ;
+    rdfs:label "Sky Ultrafast Broadband" ;
+    cto:service_name "Sky Ultrafast" ;
+    cto:listed_down "300 Mbps" ;
+    cto:listed_up "50 Mbps" ;
+    cto:guaranteed_down "100 Mbps" ;
+    cto:monthly_cost "35.00"^^xsd:float ;
+    cto:setup_cost "0.00"^^xsd:float ;
+    cto:bundle_home_phone "true"^^xsd:boolean ;
+    cto:bundle_video "false"^^xsd:boolean .
+
+# Location
+ex:london a geo:SpatialThing ;
+    rdfs:label "London" ;
+    geo:lat "51.5074"^^xsd:float ;
+    geo:long "-0.1278"^^xsd:float . 

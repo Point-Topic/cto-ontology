@@ -1,0 +1,60 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix cto: <https://github.com/Point-Topic/cto-ontology/> .
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix ex: <https://example.org/> .
+
+# Network Operator
+ex:openreach a cto:NetworkOperator ;
+    rdfs:label "Openreach" ;
+    cto:isWholesaler "true"^^xsd:boolean ;
+    cto:ownsNetwork ex:openreach_fttp ;
+    rdfs:comment "Openreach is a British telecommunications infrastructure company." .
+
+# ISP
+ex:bt a cto:ISP ;
+    rdfs:label "BT" ;
+    rdfs:comment "BT Group plc is a British telecommunications company." ;
+    cto:hasWholesaler ex:openreach ;
+    cto:usesNetwork ex:openreach_fttp ;
+    cto:offersService ex:bt_full_fibre .
+
+# Network
+ex:openreach_fttp a cto:Network ;
+    rdfs:label "Openreach FTTP Network" ;
+    cto:usesLink ex:fttp_link ;
+    cto:hasCoverageArea ex:uk, ex:london, ex:manchester, ex:birmingham .
+
+# Link Type
+ex:fttp_link a cto:fttp ;
+    rdfs:label "fttp" .
+
+# Broadband Service
+ex:bt_full_fibre a cto:BroadbandService ;
+    rdfs:label "BT Full Fibre" ;
+    cto:service_name "BT Full Fibre 900" ;
+    cto:listed_down "900 Mbps" ;
+    cto:listed_up "110 Mbps" ;
+    cto:guaranteed_down "455 Mbps" ;
+    cto:monthly_cost "49.99"^^xsd:float ;
+    cto:setup_cost "9.99"^^xsd:float ;
+    cto:bundle_home_phone "true"^^xsd:boolean ;
+    cto:bundle_video "false"^^xsd:boolean .
+
+# Locations
+ex:uk a geo:SpatialThing ;
+    rdfs:label "United Kingdom" ;
+    geo:lat "55.3781"^^xsd:float ;
+    geo:long "-3.4360"^^xsd:float .
+
+ex:london a cto:Postcode ;
+    rdfs:label "London" .
+
+ex:manchester a cto:Postcode ;
+    rdfs:label "Manchester" .
+
+ex:birmingham a cto:Postcode ;
+    rdfs:label "Birmingham" . 

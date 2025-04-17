@@ -1,0 +1,92 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix cto: <https://github.com/Point-Topic/cto-ontology/> .
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix om: <https://bioportal.bioontology.org/ontologies/UO> .
+@prefix ex: <https://example.org/> .
+
+# User
+ex:john a cto:User ;
+    rdfs:label "John Smith" ;
+    foaf:firstName "John" ;
+    foaf:lastName "Smith" ;
+    cto:hasUserID "user12345" ;
+    cto:hasDevice ex:johns_laptop .
+
+# User Device
+ex:johns_laptop a cto:UserDevice ;
+    rdfs:label "John's Laptop" ;
+    cto:belongsTo ex:john ;
+    cto:hasJoinDate "2023-05-15T10:30:00Z"^^xsd:dateTime ;
+    cto:hasInterface ex:laptop_wifi ;
+    cto:hasUserDeviceStatus ex:attached ;
+    cto:hasService ex:video_streaming ;
+    cto:apsInRange ex:home_wifi_ap .
+
+# WiFi Interface
+ex:laptop_wifi a cto:WLAN ;
+    rdfs:label "Laptop WiFi Interface" ;
+    cto:isIn ex:johns_laptop ;
+    cto:hasMAC "00:1A:2B:3C:4D:5E" ;
+    cto:hasIP "192.168.1.100" ;
+    cto:channel "6"^^xsd:int ;
+    cto:frequency "2.4"^^xsd:float ;
+    cto:isUP "true"^^xsd:boolean ;
+    cto:hasWirelessAssociation ex:wifi_connection .
+
+# Access Point
+ex:home_wifi_ap a cto:WiFiAccessPoint ;
+    rdfs:label "Home WiFi Access Point" ;
+    cto:ssid "HomeNetwork" ;
+    cto:hasInterface ex:ap_wifi ;
+    geo:location ex:home_location ;
+    cto:hasAssociatedStations ex:johns_laptop .
+
+# AP WiFi Interface
+ex:ap_wifi a cto:WLAN ;
+    rdfs:label "AP WiFi Interface" ;
+    cto:isIn ex:home_wifi_ap ;
+    cto:hasMAC "AA:BB:CC:DD:EE:FF" ;
+    cto:hasIP "192.168.1.1" ;
+    cto:channel "6"^^xsd:int ;
+    cto:hasTransmitPower ex:ap_power .
+
+# Wireless Link
+ex:wifi_connection a cto:WiFiAssociation ;
+    rdfs:label "WiFi Connection" ;
+    cto:from ex:laptop_wifi ;
+    cto:to ex:ap_wifi ;
+    cto:hasDatarate ex:wifi_datarate ;
+    cto:hasRoundTripTime ex:wifi_rtt .
+
+# Measurements
+ex:ap_power a om:ObervationAndMeasurement ;
+    om:hasValue "20.0"^^xsd:float ;
+    om:hasUnit "dBm" .
+
+ex:wifi_datarate a om:ObervationAndMeasurement ;
+    om:hasValue "300.0"^^xsd:float ;
+    om:hasUnit "Mbps" .
+
+ex:wifi_rtt a om:ObervationAndMeasurement ;
+    om:hasValue "5.2"^^xsd:float ;
+    om:hasUnit "ms" .
+
+# Location
+ex:home_location a geo:SpatialThing ;
+    geo:lat "51.5074"^^xsd:float ;
+    geo:long "-0.1278"^^xsd:float ;
+    geo:alt "23.0"^^xsd:float .
+
+# Service
+ex:video_streaming a cto:VideoService ;
+    rdfs:label "Video Streaming Service" ;
+    cto:hasServiceType "Streaming" ;
+    cto:hasServiceStartTime "2023-05-15T14:30:00Z"^^xsd:dateTime ;
+    cto:hasServiceStatus "Active" .
+
+# Status
+ex:attached a cto:Attached . 
