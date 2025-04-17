@@ -649,6 +649,48 @@ ObjectProperty: cto:offersService
     Range: 
         cto:Service
 
+ObjectProperty: dcat:record
+
+    Annotations: 
+        rdfs:comment "A record describing the registration of a single resource (e.g., a dataset, a data service) that is part of the catalog."
+    
+    Domain: 
+        dcat:Catalog
+    
+    Range: 
+        dcat:CatalogRecord
+
+
+# foaf:primaryTopic has Domain: dcat:CatalogRecord and Range: dcat:Resource in DCAT context, but I am not setting these so this property can be used more widely
+ObjectProperty: foaf:primaryTopic
+
+    Annotations: 
+        rdfs:comment "DCAT: The dcat:Resource (dataset or service) described in the record. FOAF: The primaryTopic property relates a document to the main thing that the document is about."
+    
+
+ObjectProperty: dcat:servesDataset
+
+    Annotations:
+        rdfs:comment "A collection of data that this data service can distribute."
+
+    Domain:
+        dcat:DataService
+
+    Range:
+        dcat:Dataset
+
+
+ObjectProperty: dcat:inSeries
+
+    Annotations:
+        rdfs:comment "A dataset series of which the dataset is part."
+
+    Domain:
+        dcat:Dataset
+
+    Range:
+        dcat:DatasetSeries
+
 
 DataProperty: <http://www.w3.org/2003/01/geo/wgs84_pos#alt>
 
@@ -2208,3 +2250,46 @@ Class: cto:CellularService
         cto:Service
 
 
+Class: dcat:Catalog
+
+    Annotations:
+        rdfs:comment "A catalogue or repository that hosts the Datasets or Data Services being described."
+
+
+Class: dcat:CatalogRecord
+
+    Annotations:
+        rdfs:comment "A description of a Catalogued Resource's entry in the Catalogue."
+
+
+Class: dcat:Resource
+
+    Annotations:
+        rdfs:comment "Resource published or curated by a single agent."
+
+
+Class: dcat:Dataset
+
+    Annotations:
+        rdfs:comment "A conceptual entity that represents the information published. In practice not limited to a dataset, can also be an article, webpage, etc."
+    
+    SubClassOf: 
+        dcat:Resource
+
+
+Class: dcat:DatasetSeries
+
+    Annotations:
+        rdfs:comment "A collection of datasets that are published separately, but share some characteristics that group them."
+    
+    SubClassOf: 
+        dcat:Resource
+
+
+Class: dcat:DataService
+
+    Annotations:
+        rdfs:comment "A collection of operations that provides access to one or more datasets or data processing functions."
+
+    SubClassOf: 
+        dcat:Resource
