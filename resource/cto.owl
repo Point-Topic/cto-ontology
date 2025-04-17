@@ -14,6 +14,7 @@ Prefix: xml: <http://www.w3.org/XML/1998/namespace>
 Prefix: xsd: <http://www.w3.org/2001/XMLSchema#>
 Prefix: qudt: <http://qudt.org/3.1.0/schema/qudt>
 Prefix: dcat: <https://www.w3.org/TR/vocab-dcat-3/>
+Prefix: dcterms: <http://purl.org/dc/terms/>
 
 
 Ontology: <https://github.com/Point-Topic/cto-ontology/>
@@ -661,11 +662,17 @@ ObjectProperty: dcat:record
         dcat:CatalogRecord
 
 
-# foaf:primaryTopic has Domain: dcat:CatalogRecord and Range: dcat:Resource in DCAT context, but I am not setting these so this property can be used more widely
+# foaf:primaryTopic has Domain: dcat:CatalogRecord and Range: dcat:Resource in DCAT context. I am using it to relate a dcat:Resource to a foaf:Organization which is more useful in our context.
 ObjectProperty: foaf:primaryTopic
 
     Annotations: 
         rdfs:comment "DCAT: The dcat:Resource (dataset or service) described in the record. FOAF: The primaryTopic property relates a document to the main thing that the document is about."
+
+    Domain: 
+        dcat:Resource
+
+    Range:
+        foaf:Organization
     
 
 ObjectProperty: dcat:servesDataset
@@ -690,6 +697,30 @@ ObjectProperty: dcat:inSeries
 
     Range:
         dcat:DatasetSeries
+
+
+ObjectProperty: dcat:geographicalCoverage
+
+    Annotations:
+        rdfs:comment "The geographical area covered by the dataset."
+
+    Domain:
+        dcat:Catalog
+
+    Range:
+        dcterms:Location
+
+
+ObjectProperty: dcterms:publisher
+
+    Annotations:
+        rdfs:comment "The entity responsible for making the resource available."
+
+    Domain:
+        dcat:Catalog or dcat:Resource
+
+    Range:
+        foaf:Organization
 
 
 DataProperty: <http://www.w3.org/2003/01/geo/wgs84_pos#alt>
@@ -1729,23 +1760,6 @@ Class: qudt:GigaBIT-PER-SEC
     
     
 Class: <http://purl.org/vocommons/voaf#Vocabulary>
-
-    
-Class: <http://www.w3.org/2003/01/geo/wgs84_pos#Point>
-
-    Annotations: 
-        rdfs:comment "The relation between something and the point, 
- or other geometrical thing in space, where it is.  For example, the realtionship between
- a radio tower and a Point with a given lat and long.
- Or a relationship between a park and its outline as a closed arc of points, or a road and
- its location as a arc (a sequence of points).
- Clearly in practice there will be limit to the accuracy of any such statement, but one would expect
- an accuracy appropriate for the size of the object and uses such as mapping .",
-        rdfs:isDefinedBy <http://www.w3.org/2003/01/geo/wgs84_pos#>,
-        rdfs:label "location"
-    
-    SubClassOf: 
-        <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing>
     
     
 Class: <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing>
@@ -1755,7 +1769,22 @@ Class: <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing>
     
     SubClassOf: 
         cto:ConceptEntities
-    
+
+Class: dcterms:Location
+
+    Annotations: rdfs:comment "A spatial region or named place."
+
+    SubClassOf:
+        <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing>
+
+
+Class: cto:Postcode
+
+    Annotations: rdfs:comment "A postcode."
+
+    SubClassOf:
+        dcterms:Location
+
     
 Class: foaf:Person
 
