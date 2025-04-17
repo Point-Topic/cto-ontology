@@ -2197,7 +2197,7 @@ DataProperty: cto:bundle_video
 ObjectProperty: cto:consolidatedInto
 
     Annotations: 
-        rdfs:comment "Represents the relationship where one ISP has been consolidated into another ISP through merger, acquisition, or other business consolidation."
+        rdfs:comment "Represents the relationship where one organiztion has been consolidated into another through merger, acquisition, or other business consolidation."
     
     Domain: 
         foaf:Organization

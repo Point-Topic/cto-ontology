@@ -1,7 +1,7 @@
 # Common Telecommunications Ontology (CTO Ontology)
 (In development)
 
-A common and general ontology for telecommunications networks. 
+A common and general ontology for telecommunications networks and the telecoms sector. 
 
 Originally based on and extended from the TOCO ontology created by Qianru Zhou: https://github.com/QianruZhou333/toco_ontology.git
 
