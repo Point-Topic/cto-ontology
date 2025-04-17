@@ -13,7 +13,7 @@ Prefix: vann: <http://purl.org/vacob/vann/>
 Prefix: xml: <http://www.w3.org/XML/1998/namespace>
 Prefix: xsd: <http://www.w3.org/2001/XMLSchema#>
 Prefix: qudt: <http://qudt.org/3.1.0/schema/qudt>
-
+Prefix: dcat: <https://www.w3.org/TR/vocab-dcat-3/>
 
 
 Ontology: <https://github.com/Point-Topic/cto-ontology/>
@@ -625,7 +625,31 @@ ObjectProperty: cto:hasCoverageArea
     Range: 
         <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing>
 
+
+ObjectProperty: cto:consolidatedInto
+
+    Annotations: 
+        rdfs:comment "Represents the relationship where one organiztion has been consolidated into another through merger, acquisition, or other business consolidation."
     
+    Domain: 
+        foaf:Organization
+    
+    Range: 
+        foaf:Organization
+
+    Characteristics: 
+        Symmetric
+
+
+ObjectProperty: cto:offersService
+
+    Annotations: 
+        rdfs:comment "Service offered to end users by an organisation."
+    
+    Range: 
+        cto:Service
+
+
 DataProperty: <http://www.w3.org/2003/01/geo/wgs84_pos#alt>
 
     Annotations: 
@@ -1177,6 +1201,125 @@ DataProperty: cto:isRetailer
     
     Domain: 
         cto:ISP
+    
+    Range: 
+        xsd:boolean
+
+DataProperty: cto:service_name
+
+    Annotations: 
+        rdfs:comment "The name of the service offer."
+    
+    Domain: 
+        cto:Service
+    
+    Range: 
+        xsd:string
+
+
+DataProperty: cto:listed_down
+
+    Annotations: 
+        rdfs:comment "The advertised download speed of the broadband service."
+    
+    Domain: 
+        cto:BroadbandService
+    
+    Range: 
+        xsd:string
+
+
+DataProperty: cto:listed_up
+
+    Annotations: 
+        rdfs:comment "The advertised upload speed of the broadband service."
+    
+    Domain: 
+        cto:BroadbandService
+    
+    Range: 
+        xsd:string
+
+
+DataProperty: cto:guaranteed_up
+
+    Annotations: 
+        rdfs:comment "The guaranteed minimum upload speed of the broadband service."
+    
+    Domain: 
+        cto:BroadbandService
+    
+    Range: 
+        xsd:string
+
+
+DataProperty: cto:guaranteed_down
+
+    Annotations: 
+        rdfs:comment "The guaranteed minimum download speed of the broadband service."
+    
+    Domain: 
+        cto:BroadbandService
+    
+    Range: 
+        xsd:string
+
+
+DataProperty: cto:monthly_cost
+
+    Annotations: 
+        rdfs:comment "The monthly cost of the service."
+    
+    Domain: 
+        cto:Service
+    
+    Range: 
+        xsd:float
+
+
+DataProperty: cto:setup_cost
+
+    Annotations: 
+        rdfs:comment "The setup/installation cost of the broadband service."
+    
+    Domain: 
+        cto:BroadbandService
+    
+    Range: 
+        xsd:float
+
+
+DataProperty: cto:bundle_home_phone
+
+    Annotations: 
+        rdfs:comment "Whether the broadband service includes a home phone bundle."
+    
+    Domain: 
+        cto:BroadbandService
+    
+    Range: 
+        xsd:boolean
+
+
+DataProperty: cto:bundle_mobile_phone
+
+    Annotations: 
+        rdfs:comment "Whether the broadband service includes a mobile phone bundle."
+    
+    Domain: 
+        cto:BroadbandService
+    
+    Range: 
+        xsd:boolean
+
+
+DataProperty: cto:bundle_video
+
+    Annotations: 
+        rdfs:comment "Whether the broadband service includes a video/TV bundle."
+    
+    Domain: 
+        cto:BroadbandService
     
     Range: 
         xsd:boolean
@@ -2065,145 +2208,3 @@ Class: cto:CellularService
         cto:Service
 
 
-ObjectProperty: cto:offersService
-
-    Annotations: 
-        rdfs:comment "Service offered to end users by an organisation."
-    
-    Range: 
-        cto:Service
-
-
-DataProperty: cto:service_name
-
-    Annotations: 
-        rdfs:comment "The name of the service offer."
-    
-    Domain: 
-        cto:Service
-    
-    Range: 
-        xsd:string
-
-
-DataProperty: cto:listed_down
-
-    Annotations: 
-        rdfs:comment "The advertised download speed of the broadband service."
-    
-    Domain: 
-        cto:BroadbandService
-    
-    Range: 
-        xsd:string
-
-
-DataProperty: cto:listed_up
-
-    Annotations: 
-        rdfs:comment "The advertised upload speed of the broadband service."
-    
-    Domain: 
-        cto:BroadbandService
-    
-    Range: 
-        xsd:string
-
-
-DataProperty: cto:guaranteed_up
-
-    Annotations: 
-        rdfs:comment "The guaranteed minimum upload speed of the broadband service."
-    
-    Domain: 
-        cto:BroadbandService
-    
-    Range: 
-        xsd:string
-
-
-DataProperty: cto:guaranteed_down
-
-    Annotations: 
-        rdfs:comment "The guaranteed minimum download speed of the broadband service."
-    
-    Domain: 
-        cto:BroadbandService
-    
-    Range: 
-        xsd:string
-
-
-DataProperty: cto:monthly_cost
-
-    Annotations: 
-        rdfs:comment "The monthly cost of the service."
-    
-    Domain: 
-        cto:Service
-    
-    Range: 
-        xsd:float
-
-
-DataProperty: cto:setup_cost
-
-    Annotations: 
-        rdfs:comment "The setup/installation cost of the broadband service."
-    
-    Domain: 
-        cto:BroadbandService
-    
-    Range: 
-        xsd:float
-
-
-DataProperty: cto:bundle_home_phone
-
-    Annotations: 
-        rdfs:comment "Whether the broadband service includes a home phone bundle."
-    
-    Domain: 
-        cto:BroadbandService
-    
-    Range: 
-        xsd:boolean
-
-
-DataProperty: cto:bundle_mobile_phone
-
-    Annotations: 
-        rdfs:comment "Whether the broadband service includes a mobile phone bundle."
-    
-    Domain: 
-        cto:BroadbandService
-    
-    Range: 
-        xsd:boolean
-
-
-DataProperty: cto:bundle_video
-
-    Annotations: 
-        rdfs:comment "Whether the broadband service includes a video/TV bundle."
-    
-    Domain: 
-        cto:BroadbandService
-    
-    Range: 
-        xsd:boolean
-
-
-ObjectProperty: cto:consolidatedInto
-
-    Annotations: 
-        rdfs:comment "Represents the relationship where one organiztion has been consolidated into another through merger, acquisition, or other business consolidation."
-    
-    Domain: 
-        foaf:Organization
-    
-    Range: 
-        foaf:Organization
-
-    Characteristics: 
-        Symmetric
