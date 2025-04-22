@@ -1834,7 +1834,7 @@ Class: cto:ISP
         rdfs:comment "internet service provider that provides services to end-users"
     
     SubClassOf: 
-        cto:NetworkOperator
+        foaf:Organization
 
 
 Class: om:ObervationAndMeasurement
