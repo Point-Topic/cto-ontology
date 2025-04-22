@@ -1,9 +1,6 @@
 # Common Telecommunications Ontology (CTO Ontology)
-(In development)
 
-A common and general ontology for telecommunications networks and the telecoms sector, developed by Point Topic Ltd (www.point-topic.com). 
-
-Originally based on and extended from the TOCO ontology created by Qianru Zhou: https://github.com/QianruZhou333/toco_ontology.git
+A common and general ontology for telecommunications networks and the telecoms sector, developed by Point Topic Ltd (www.point-topic.com). Written in OWL.
 
 The purpose of this ontology is to capture and represent the multi-domain nature of telecommunication data:
 - organisational
@@ -11,6 +8,8 @@ The purpose of this ontology is to capture and represent the multi-domain nature
 - technical
 - socio-economic
 - commercial
+
+Originally based on and extended from the TOCO ontology created by Qianru Zhou: https://github.com/QianruZhou333/toco_ontology.git
 
 ## Vocabulary
 Vocabulary is divided into 
@@ -22,6 +21,12 @@ The ontology makes use of terms from other vocabularies, including Dublin Core a
 
 ## Creator
 Arnold Kuersteiner (arnold.kursteiner@point-topic.com)
+
+## Documentation
+Documentation is available in `documentation/cto_doc.html`
+
+## Visualisation
+To visualise, import the `resource/cto.owl` file into `https://service.tib.eu/webvowl/` or Protégé.
 
 ## Reference
 More information, examples, and use cases could be found in:
