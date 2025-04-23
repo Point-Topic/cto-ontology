@@ -624,7 +624,7 @@ ObjectProperty: cto:hasCoverageArea
         cto:Network
     
     Range: 
-        <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing>
+        dcterms:Location
 
 
 ObjectProperty: cto:consolidatedInto
