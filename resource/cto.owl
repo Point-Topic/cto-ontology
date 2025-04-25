@@ -1989,10 +1989,6 @@ Class: cto:LTEAssociation
 
 Class: cto:Link
 
-    SubClassOf: 
-        cto:Network
-
-
 Class: cto:Network
 
     SubClassOf: 
