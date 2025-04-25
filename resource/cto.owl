@@ -136,7 +136,7 @@ ObjectProperty: om:hasUnits
         rdfs:isDefinedBy <https://github.com/Point-Topic/cto-ontology/>
     
     Domain: 
-        om:ObervationAndMeasurement
+        om:ObservationAndMeasurement
     
     Range: 
         <http://purl.obolibrary.org/obo/uo.owl/unit>
@@ -217,7 +217,7 @@ ObjectProperty: cto:hasBandwidth
         cto:Link
     
     Range: 
-        om:ObervationAndMeasurement
+        om:ObservationAndMeasurement
     
     
 ObjectProperty: cto:hasDatarate
@@ -232,7 +232,7 @@ ObjectProperty: cto:hasDatarate
         cto:Link
     
     Range: 
-        om:ObervationAndMeasurement
+        om:ObservationAndMeasurement
     
     
 ObjectProperty: cto:hasDevice
@@ -344,7 +344,7 @@ ObjectProperty: cto:hasRoundTripTime
         cto:Link
     
     Range: 
-        om:ObervationAndMeasurement
+        om:ObservationAndMeasurement
     
     
 ObjectProperty: cto:hasSatelliteAssociation
@@ -383,7 +383,7 @@ ObjectProperty: cto:hasStandardDeviation
         cto:Link
     
     Range: 
-        om:ObervationAndMeasurement
+        om:ObservationAndMeasurement
     
     
 ObjectProperty: cto:hasThroughPut
@@ -395,7 +395,7 @@ ObjectProperty: cto:hasThroughPut
         cto:Link
     
     Range: 
-        om:ObervationAndMeasurement
+        om:ObservationAndMeasurement
     
     
 ObjectProperty: cto:hasTransmitPower
@@ -410,7 +410,7 @@ ObjectProperty: cto:hasTransmitPower
         cto:Interface
     
     Range: 
-        om:ObervationAndMeasurement
+        om:ObservationAndMeasurement
     
     
 ObjectProperty: cto:hasTxpower
@@ -425,7 +425,7 @@ ObjectProperty: cto:hasTxpower
         cto:Link
     
     Range: 
-        om:ObervationAndMeasurement
+        om:ObservationAndMeasurement
     
     
 ObjectProperty: cto:hasUserDeviceStatus
@@ -517,7 +517,7 @@ ObjectProperty: cto:range
         cto:Device
     
     Range: 
-        om:ObervationAndMeasurement
+        om:ObservationAndMeasurement
     
     
 ObjectProperty: cto:stationsInRange
@@ -626,6 +626,16 @@ ObjectProperty: cto:hasCoverageArea
     Range: 
         dcterms:Location
 
+ObjectProperty: cto:hasCoverage
+
+    Annotations: 
+        rdfs:comment "coverage level of a network (percentage, population, or otherwise)"
+    
+    Domain: 
+        cto:Network
+    
+    Range: 
+        om:ObservationAndMeasurement
 
 ObjectProperty: cto:consolidatedInto
 
@@ -809,7 +819,7 @@ DataProperty: om:hasUnit
         rdfs:isDefinedBy <http://purl.oclc.org/net/unis/ontology/sensordata.owl/>
     
     Domain: 
-        om:ObervationAndMeasurement
+        om:ObservationAndMeasurement
     
     Range: 
         xsd:string
@@ -822,7 +832,7 @@ DataProperty: om:hasValue
         rdfs:isDefinedBy <https://github.com/Point-Topic/cto-ontology/>
     
     Domain: 
-        om:ObervationAndMeasurement
+        om:ObservationAndMeasurement
     
     Range: 
         xsd:float
@@ -1837,7 +1847,7 @@ Class: cto:ISP
         foaf:Organization
 
 
-Class: om:ObervationAndMeasurement
+Class: om:ObservationAndMeasurement
 
     Annotations: 
         rdfs:comment "reused from SenSei Observation And Measurement Ontology (http://purl.oclc.org/net/unis/ontology/sensordata.owl)."^^xsd:string,
@@ -2322,3 +2332,24 @@ Class: dcat:DataService
 
     SubClassOf: 
         dcat:Resource
+
+
+Class: <http://purl.obolibrary.org/obo/UO_0000190>
+
+    Annotations: 
+        rdfs:isDefinedBy <http://purl.obolibrary.org/obo/uo.owl>,
+        rdfs:label "dimensionless unit"
+    
+    SubClassOf: 
+        <http://purl.obolibrary.org/obo/uo.owl/unit>
+    
+    
+Class: <http://purl.obolibrary.org/obo/UO_0000187>
+
+    Annotations: 
+        rdfs:isDefinedBy <http://purl.obolibrary.org/obo/uo.owl>,
+        rdfs:label "percent",
+        rdfs:comment "A dimensionless ratio unit which denotes numbers as fractions of 100."
+    
+    SubClassOf: 
+        <http://purl.obolibrary.org/obo/UO_0000190>
