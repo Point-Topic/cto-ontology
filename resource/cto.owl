@@ -1288,7 +1288,7 @@ DataProperty: cto:isRetailer
     Range: 
         xsd:boolean
 
-DataProperty: cto:service_name
+DataProperty: cto:hasServiceName
 
     Annotations: 
         rdfs:comment "The name of the service offer."
@@ -1300,7 +1300,7 @@ DataProperty: cto:service_name
         xsd:string
 
 
-DataProperty: cto:listed_down
+DataProperty: cto:hasListedDown
 
     Annotations: 
         rdfs:comment "The advertised download speed of the broadband service."
@@ -1312,7 +1312,7 @@ DataProperty: cto:listed_down
         xsd:string
 
 
-DataProperty: cto:listed_up
+DataProperty: cto:hasListedUp
 
     Annotations: 
         rdfs:comment "The advertised upload speed of the broadband service."
@@ -1324,7 +1324,7 @@ DataProperty: cto:listed_up
         xsd:string
 
 
-DataProperty: cto:guaranteed_up
+DataProperty: cto:hasGuaranteedUp
 
     Annotations: 
         rdfs:comment "The guaranteed minimum upload speed of the broadband service."
@@ -1336,7 +1336,7 @@ DataProperty: cto:guaranteed_up
         xsd:string
 
 
-DataProperty: cto:guaranteed_down
+DataProperty: cto:hasGuaranteedDown
 
     Annotations: 
         rdfs:comment "The guaranteed minimum download speed of the broadband service."
@@ -1348,7 +1348,7 @@ DataProperty: cto:guaranteed_down
         xsd:string
 
 
-DataProperty: cto:monthly_cost
+DataProperty: cto:hasMonthlyCost
 
     Annotations: 
         rdfs:comment "The monthly cost of the service."
@@ -1360,7 +1360,7 @@ DataProperty: cto:monthly_cost
         xsd:float
 
 
-DataProperty: cto:setup_cost
+DataProperty: cto:hasSetupCost
 
     Annotations: 
         rdfs:comment "The setup/installation cost of the broadband service."
@@ -1372,7 +1372,7 @@ DataProperty: cto:setup_cost
         xsd:float
 
 
-DataProperty: cto:bundle_home_phone
+DataProperty: cto:hasBundleHomePhone
 
     Annotations: 
         rdfs:comment "Whether the broadband service includes a home phone bundle."
@@ -1384,7 +1384,7 @@ DataProperty: cto:bundle_home_phone
         xsd:boolean
 
 
-DataProperty: cto:bundle_mobile_phone
+DataProperty: cto:hasBundleMobilePhone
 
     Annotations: 
         rdfs:comment "Whether the broadband service includes a mobile phone bundle."
@@ -1396,10 +1396,10 @@ DataProperty: cto:bundle_mobile_phone
         xsd:boolean
 
 
-DataProperty: cto:bundle_video
+DataProperty: cto:hasBundleVideo
 
     Annotations: 
-        rdfs:comment "Whether the broadband service includes a video/TV bundle."
+        rdfs:comment "Whether the broadband service includes a TV/entertainment bundle."
     
     Domain: 
         cto:BroadbandService

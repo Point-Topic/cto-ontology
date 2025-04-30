@@ -35,14 +35,14 @@ ex:fttp_link a cto:fttp ;
 # Broadband Service
 ex:bt_full_fibre a cto:BroadbandService ;
     rdfs:label "BT Full Fibre" ;
-    cto:service_name "BT Full Fibre 900" ;
-    cto:listed_down "900 Mbps" ;
-    cto:listed_up "110 Mbps" ;
-    cto:guaranteed_down "455 Mbps" ;
-    cto:monthly_cost "49.99"^^xsd:float ;
-    cto:setup_cost "9.99"^^xsd:float ;
-    cto:bundle_home_phone "true"^^xsd:boolean ;
-    cto:bundle_video "false"^^xsd:boolean .
+    cto:hasServiceName "BT Full Fibre 900" ;
+    cto:hasListedDown "900 Mbps" ;
+    cto:hasListedUp "110 Mbps" ;
+    cto:hasGuaranteedDown "455 Mbps" ;
+    cto:hasMonthlyCost "49.99"^^xsd:float ;
+    cto:hasSetupCost "9.99"^^xsd:float ;
+    cto:hasBundleHomePhone "true"^^xsd:boolean ;
+    cto:hasBundleVideo "false"^^xsd:boolean .
 
 # Locations
 ex:uk a geo:SpatialThing ;

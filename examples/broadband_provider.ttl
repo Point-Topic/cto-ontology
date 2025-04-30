@@ -35,14 +35,14 @@ ex:skybroadband a cto:ISP ;
 # Broadband Service
 ex:sky_ultrafast a cto:BroadbandService ;
     rdfs:label "Sky Ultrafast Broadband" ;
-    cto:service_name "Sky Ultrafast" ;
-    cto:listed_down "300 Mbps" ;
-    cto:listed_up "50 Mbps" ;
-    cto:guaranteed_down "100 Mbps" ;
-    cto:monthly_cost "35.00"^^xsd:float ;
-    cto:setup_cost "0.00"^^xsd:float ;
-    cto:bundle_home_phone "true"^^xsd:boolean ;
-    cto:bundle_video "false"^^xsd:boolean .
+    cto:hasServiceName "Sky Ultrafast" ;
+    cto:hasListedDown "300 Mbps" ;
+    cto:hasListedUp "50 Mbps" ;
+    cto:hasGuaranteedDown "100 Mbps" ;
+    cto:hasMonthlyCost "35.00"^^xsd:float ;
+    cto:hasSetupCost "0.00"^^xsd:float ;
+    cto:hasBundleHomePhone "true"^^xsd:boolean ;
+    cto:hasBundleVideo "false"^^xsd:boolean .
 
 # Location
 ex:london a geo:SpatialThing ;
