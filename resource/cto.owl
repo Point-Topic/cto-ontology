@@ -1300,7 +1300,7 @@ DataProperty: cto:hasServiceName
         xsd:string
 
 
-DataProperty: cto:hasListedDown
+DataProperty: cto:hasFastestDown
 
     Annotations: 
         rdfs:comment "The advertised download speed of the broadband service."
@@ -1312,7 +1312,7 @@ DataProperty: cto:hasListedDown
         xsd:string
 
 
-DataProperty: cto:hasListedUp
+DataProperty: cto:hasFastestUp
 
     Annotations: 
         rdfs:comment "The advertised upload speed of the broadband service."
@@ -2270,7 +2270,7 @@ Class: cto:gfast
 Class: cto:BroadbandService
 
     Annotations: 
-        rdfs:comment "Broadband services provided to a fixed location associated with an address, including FTTX, ADSL services."
+        rdfs:comment "Broadband services provided to a fixed location associated with an address."
     
     SubClassOf: 
         cto:Service

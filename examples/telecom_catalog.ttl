@@ -66,6 +66,6 @@ ex:vodafone a cto:ISP ;
 ex:vodafone_gigafast a cto:BroadbandService ;
     rdfs:label "Vodafone Gigafast" ;
     cto:hasServiceName "Gigafast Broadband" ;
-    cto:hasListedDown "900 Mbps" ;
-    cto:hasListedUp "90 Mbps" ;
+    cto:hasFastestDown "900 Mbps" ;
+    cto:hasFastestUp "90 Mbps" ;
     cto:hasMonthlyCost "45.00"^^xsd:float . 
