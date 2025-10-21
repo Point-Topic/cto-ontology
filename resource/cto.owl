@@ -148,40 +148,6 @@ ObjectProperty: owl:topObjectProperty
 
     
     
-ObjectProperty: cto:hasBandwidth
-
-    Annotations: 
-        rdfs:comment "the bandwidth of the link"^^xsd:string,
-        rdfs:isDefinedBy <https://github.com/Point-Topic/cto-ontology/>
-    
-    SubPropertyOf: 
-        cto:hasLinkProperty
-    
-    Domain: 
-        cto:Link
-    
-    Range: 
-        om:ObservationAndMeasurement
-    
-    
-ObjectProperty: cto:hasWiredLink
-
-    Annotations: 
-        rdfs:comment "wired link through twisted cable, optical fiber, etc."
-    
-    SubPropertyOf: 
-        cto:hasLink
-    
-    DisjointWith: 
-        cto:hasWirelessAssociation
-    
-    Domain: 
-        cto:Interface
-    
-    Range: 
-        cto:WiredLink
-    
-    
 ObjectProperty: cto:ownsNetwork
 
     Annotations: 
@@ -1035,9 +1001,7 @@ Class: cto:PhysicalEntities
 Class: cto:Device
 
     Annotations: 
-        rdfs:comment "represent all the devices in the physical infrastructure of telecommunciation system. 
-
-According to its user, could be divided into UserDevice and SystemDevice."^^xsd:string
+        rdfs:comment "represent all the devices in the physical infrastructure of telecommunciation system."^^xsd:string
     
     SubClassOf: 
         cto:PhysicalInfrastructure
@@ -1054,7 +1018,7 @@ Class: cto:Network
 Class: cto:PhysicalInfrastructure
 
     Annotations: 
-        rdfs:comment "Describe all the physical resources in a telecommunication network system, which is divided into three main modules, namely, device, interface, link (under network). 
+        rdfs:comment "Describe all the physical resources in a telecommunication network system, which is divided into two main modules, namely, device and link (under network). 
 
 Please be reminded the electromagnetic wave (which is the links of all wireless communication netwoks), even if it is invisable, physically exists. Thus, it is also described in the subclass of \"net;PhysicalInfrastructure\"."^^xsd:string
     
@@ -1120,12 +1084,6 @@ Class: cto:WirelessAssociation
     
     DisjointWith: 
         cto:WiredLink
-    
-    
-Class: cto:unReachable
-
-    SubClassOf: 
-        cto:UserDeviceStatus
     
     
 Individual: cto:
