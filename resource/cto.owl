@@ -206,6 +206,19 @@ ObjectProperty: cto:consolidatedInto
         foaf:Organization
 
 
+ObjectProperty: cto:hasCorporateRelationship
+
+    Annotations: 
+        rdfs:comment "Relates one organization to another through a corporate relationship such as investment or ownership.",
+        rdfs:isDefinedBy <https://github.com/Point-Topic/cto-ontology/>
+    
+    Domain: 
+        foaf:Organization
+    
+    Range: 
+        foaf:Organization
+
+
 ObjectProperty: cto:offersService
 
     Annotations: 
@@ -535,6 +548,19 @@ DataProperty: cto:hasBundleVideo
     
     Range: 
         xsd:boolean
+
+
+DataProperty: cto:corporateRelationshipType
+
+    Annotations: 
+        rdfs:comment "The type of corporate relationship (e.g., 'investment', 'ownership', 'subsidiary').",
+        rdfs:isDefinedBy <https://github.com/Point-Topic/cto-ontology/>
+    
+    Domain: 
+        foaf:Organization
+    
+    Range: 
+        xsd:string
 
 
 Class: <http://purl.obolibrary.org/obo/UO_0000001>
