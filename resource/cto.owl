@@ -22,6 +22,8 @@ Ontology: <https://github.com/Point-Topic/cto-ontology/>
 
 Annotations: 
     cc:license <http://creativecommons.org/licenses/by/3.0/>,
+    dc:contributor <https://www.linkedin.com/in/oliver-johnson-1a3ba2/>,
+    dc:contributor <https://www.linkedin.com/in/arnold-r-kürsteiner-4171981a2/>,
     dc:contributor <http://www.macs.hw.ac.uk/~ajg33/>,
     dc:contributor <https://www.eng.ed.ac.uk/about/people/mr-mohammad-dehghani-soltani>,
     dc:contributor <https://www.hw.ac.uk/staff/uk/eps/stephen-mclaughlin.htm>,
@@ -32,8 +34,8 @@ Annotations:
     dc:modified "2024-7-1"^^xsd:date,
     dc:publisher <https://www.point-topic.com/>,
     dc:rights "Copyright  © 2024 Point Topic",
-    dc:title "Common Broadband Ontology"@en,
-    vann:preferredNamespacePrefix "cbo",
+    dc:title "Common Telecoms Ontology"@en,
+    vann:preferredNamespacePrefix "cto",
     vann:preferredNamespaceUri "https://github.com/Point-Topic/cto-ontology/",
     rdfs:comment "Version 1.0: creation"@en,
     owl:versionInfo 1.0
