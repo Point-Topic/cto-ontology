@@ -3,32 +3,40 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix cto: <https://github.com/Point-Topic/cto-ontology/> .
+@prefix cto: <http://pointtopic.com/ontologies/cto/1.0#> .
 @prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
 @prefix qudt: <http://qudt.org/3.1.0/schema/qudt> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix ex: <https://example.org/> .
 
+# Organization Types
+ex:network_operator_type a cto:OrganizationType ;
+    rdfs:label "Network Operator" .
+
+ex:isp_type a cto:OrganizationType ;
+    rdfs:label "ISP" .
+
 # Network Operator
-ex:openreach a cto:NetworkOperator ;
+ex:openreach a foaf:Organization ;
     rdfs:label "Openreach" ;
-    cto:isWholesaler "true"^^xsd:boolean ;
+    cto:isOrganizationType ex:network_operator_type ;
+    cto:isWholesaleOnly "true"^^xsd:boolean ;
     cto:ownsNetwork ex:openreach_fttp .
 
 # Network
 ex:openreach_fttp a cto:Network ;
     rdfs:label "Openreach FTTP Network" ;
     cto:usesLink ex:fttp_link ;
-    cto:hasCoverageArea ex:london .
+    cto:hasCoverageArea ex:w2_1bt .
 
 # Link Type
-ex:fttp_link a cto:fttp ;
-    rdfs:label "fttp" .
+ex:fttp_link a cto:Link ;
+    rdfs:label "FTTP Link" .
 
 # ISP
-ex:skybroadband a cto:ISP ;
-    rdfs:label "Sky Broadband" ;
-    cto:hasWholesaler ex:openreach ;
+ex:sky a foaf:Organization ;
+    rdfs:label "Sky" ;
+    cto:isOrganizationType ex:isp_type ;
     cto:usesNetwork ex:openreach_fttp ;
     cto:offersService ex:sky_ultrafast .
 
@@ -45,7 +53,7 @@ ex:sky_ultrafast a cto:BroadbandService ;
     cto:hasBundleVideo "false"^^xsd:boolean .
 
 # Location
-ex:london a geo:SpatialThing ;
-    rdfs:label "London" ;
-    geo:lat "51.5074"^^xsd:float ;
-    geo:long "-0.1278"^^xsd:float . 
+ex:w2_1bt a dcterms:Location ;
+    rdfs:label "W2 1BT" ;
+    geo:lat "51.5235"^^xsd:float ;
+    geo:long "-0.1758"^^xsd:float . 

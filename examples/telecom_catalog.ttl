@@ -3,40 +3,44 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix cto: <https://github.com/Point-Topic/cto-ontology/> .
-@prefix dcat: <https://www.w3.org/TR/vocab-dcat-3/> .
+@prefix cto: <http://pointtopic.com/ontologies/cto/1.0#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix ex: <https://example.org/> .
+
+# Organization Types
+ex:non_telco_type a cto:OrganizationType ;
+    rdfs:label "Non-Telco Organization" .
+
+ex:isp_type a cto:OrganizationType ;
+    rdfs:label "ISP" .
 
 # Organization
 ex:point_topic a foaf:Organization ;
     rdfs:label "Point Topic" ;
+    cto:isOrganizationType ex:non_telco_type ;
     rdfs:comment "Telecommunications market research and analysis company" .
 
 # Catalog
-ex:broadband_data a dcat:Catalog ;
+ex:broadband_data a dcat:Catalogue ;
     rdfs:label "Broadband Data Catalog" ;
     dcterms:title "Global Broadband Statistics" ;
     dcterms:description "A comprehensive catalog of broadband deployment and subscription data worldwide" ;
     dcterms:publisher ex:point_topic ;
-    dcat:record ex:fttx_dataset_record ;
-    dcat:geographicalCoverage ex:global .
+    cto:hasRecord ex:fttx_dataset_record .
 
 # Catalog Record
-ex:fttx_dataset_record a dcat:CatalogRecord ;
+ex:fttx_dataset_record a dcat:Dataset ;
     rdfs:label "FTTX Dataset Record" ;
     dcterms:issued "2023-01-15"^^xsd:date ;
-    dcterms:modified "2023-06-30"^^xsd:date ;
-    foaf:primaryTopic ex:fttx_deployment .
+    dcterms:modified "2023-06-30"^^xsd:date .
 
 # Dataset
 ex:fttx_deployment a dcat:Dataset ;
     rdfs:label "FTTX Deployment Dataset" ;
     dcterms:title "Global FTTX Deployment Statistics" ;
     dcterms:description "Dataset containing fiber-to-the-x deployment statistics across countries and regions" ;
-    dcterms:publisher ex:point_topic ;
-    foaf:primaryTopic ex:point_topic ;
-    dcat:inSeries ex:broadband_statistics .
+    cto:isPublisher ex:point_topic .
 
 # Dataset Series
 ex:broadband_statistics a dcat:DatasetSeries ;
@@ -49,8 +53,7 @@ ex:broadband_api a dcat:DataService ;
     rdfs:label "Broadband Statistics API" ;
     dcterms:title "Broadband Data API" ;
     dcterms:description "RESTful API providing access to broadband statistics" ;
-    dcterms:publisher ex:point_topic ;
-    dcat:servesDataset ex:fttx_deployment .
+    cto:isPublisher ex:point_topic .
 
 # Location
 ex:global a dcterms:Location ;
@@ -58,8 +61,9 @@ ex:global a dcterms:Location ;
     rdfs:comment "Worldwide coverage" .
 
 # ISP Example
-ex:vodafone a cto:ISP ;
+ex:vodafone a foaf:Organization ;
     rdfs:label "Vodafone" ;
+    cto:isOrganizationType ex:isp_type ;
     cto:offersService ex:vodafone_gigafast .
 
 # Broadband Service
