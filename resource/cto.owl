@@ -239,9 +239,6 @@ ObjectProperty: cto:consolidatedInto
     Range: 
         foaf:Organization
 
-    Characteristics: 
-        Symmetric
-
 
 ObjectProperty: cto:offersService
 
@@ -989,7 +986,7 @@ Class: foaf:Organization
 Class: cto:NonTelcoOrganization
 
     Annotations: 
-        rdfs:comment "organization outside the telecommunication industry, e.g. holding companies"
+        rdfs:comment "An organization whose primary function is not the direct provision of telecommunications services, such as a holding company, conglomerate, pension fund, hedge fund, or private equity firm."
     
     SubClassOf: 
         foaf:Organization
