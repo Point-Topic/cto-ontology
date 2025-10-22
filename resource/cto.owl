@@ -243,7 +243,7 @@ ObjectProperty: cto:isOrganizationType
 ObjectProperty: cto:isNetworkType
 
     Annotations:
-        rdfs:comment "Relates a network to its type classification (e.g., Fixed, Satellite, Mobile, Hybrid)."
+        rdfs:comment "Relates a network to its type classification (e.g., Broadband Network, Satellite Network, Mobile Network, Hybrid Network, Other Network)."
 
     Domain:
         cto:Network
@@ -1253,7 +1253,7 @@ Class: cto:Network
 Class: cto:NetworkType
 
     Annotations:
-        rdfs:comment "A classification type for networks based on their technology and service delivery method (e.g., Fixed, Satellite, Mobile, Hybrid)."
+        rdfs:comment "A classification type for networks based on their technology and service delivery method (e.g., Broadband Network, Satellite Network, Mobile Network, Hybrid Network, Other Network)."
 
     SubClassOf:
         cto:ConceptualEntity

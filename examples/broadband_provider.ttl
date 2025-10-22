@@ -3,7 +3,7 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix cto: <http://pointtopic.com/ontologies/cto/1.0#> .
+@prefix cto: <https://github.com/Point-Topic/cto-ontology/> .
 @prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
 @prefix qudt: <http://qudt.org/3.1.0/schema/qudt> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
@@ -16,6 +16,10 @@ ex:network_operator_type a cto:OrganizationType ;
 ex:isp_type a cto:OrganizationType ;
     rdfs:label "ISP" .
 
+# Network Types
+ex:broadband_network_type a cto:NetworkType ;
+    rdfs:label "Broadband Network" .
+
 # Network Operator
 ex:openreach a foaf:Organization ;
     rdfs:label "Openreach" ;
@@ -26,12 +30,18 @@ ex:openreach a foaf:Organization ;
 # Network
 ex:openreach_fttp a cto:Network ;
     rdfs:label "Openreach FTTP Network" ;
+    cto:isNetworkType ex:broadband_network_type ;
     cto:usesLink ex:fttp_link ;
+    cto:usesLinkStandard ex:fttp_standard ;
     cto:hasCoverageArea ex:w2_1bt .
 
-# Link Type
+# Link Type and Standard
 ex:fttp_link a cto:Link ;
-    rdfs:label "FTTP Link" .
+    rdfs:label "FTTP Link" ;
+    cto:supportsLinkStandard ex:fttp_standard .
+
+ex:fttp_standard a cto:LinkStandard ;
+    rdfs:label "FTTP Standard" .
 
 # ISP
 ex:sky a foaf:Organization ;

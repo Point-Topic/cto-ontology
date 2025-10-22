@@ -3,8 +3,8 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix cto: <http://pointtopic.com/ontologies/cto/1.0#> .
-@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix cto: <https://github.com/Point-Topic/cto-ontology/> .
+@prefix dcat: <https://www.w3.org/TR/vocab-dcat-3/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix ex: <https://example.org/> .
 
@@ -22,12 +22,13 @@ ex:point_topic a foaf:Organization ;
     rdfs:comment "Telecommunications market research and analysis company" .
 
 # Catalog
-ex:broadband_data a dcat:Catalogue ;
+ex:broadband_data a dcat:Catalog ;
     rdfs:label "Broadband Data Catalog" ;
     dcterms:title "Global Broadband Statistics" ;
     dcterms:description "A comprehensive catalog of broadband deployment and subscription data worldwide" ;
     dcterms:publisher ex:point_topic ;
-    cto:hasRecord ex:fttx_dataset_record .
+    dcat:record ex:fttx_dataset_record ;
+    dcat:geographicalCoverage ex:global .
 
 # Catalog Record
 ex:fttx_dataset_record a dcat:Dataset ;
@@ -40,7 +41,9 @@ ex:fttx_deployment a dcat:Dataset ;
     rdfs:label "FTTX Deployment Dataset" ;
     dcterms:title "Global FTTX Deployment Statistics" ;
     dcterms:description "Dataset containing fiber-to-the-x deployment statistics across countries and regions" ;
-    cto:isPublisher ex:point_topic .
+    dcterms:publisher ex:point_topic ;
+    foaf:primaryTopic ex:point_topic ;
+    dcat:inSeries ex:broadband_statistics .
 
 # Dataset Series
 ex:broadband_statistics a dcat:DatasetSeries ;
@@ -50,10 +53,11 @@ ex:broadband_statistics a dcat:DatasetSeries ;
 
 # Data Service
 ex:broadband_api a dcat:DataService ;
-    rdfs:label "Broadband Statistics API" ;
-    dcterms:title "Broadband Data API" ;
-    dcterms:description "RESTful API providing access to broadband statistics" ;
-    cto:isPublisher ex:point_topic .
+    rdfs:label "Point Topic Broadband Statistics API" ;
+    dcterms:title "Point Topic Broadband Data API" ;
+    dcterms:description "Point Topic RESTful API providing access to broadband statistics" ;
+    dcterms:publisher ex:point_topic ;
+    dcat:servesDataset ex:fttx_deployment .
 
 # Location
 ex:global a dcterms:Location ;
