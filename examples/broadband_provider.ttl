@@ -4,8 +4,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix cto: <https://github.com/Point-Topic/cto-ontology/> .
-@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
-@prefix qudt: <http://qudt.org/3.1.0/schema/qudt> .
+@prefix geo: <http://www.w3.org/2003/01/geo/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix ex: <https://example.org/> .
 
@@ -23,8 +22,17 @@ ex:broadband_network_type a cto:NetworkType ;
 # Network Operator
 ex:openreach a foaf:Organization ;
     rdfs:label "Openreach" ;
-    cto:isOrganizationType ex:network_operator_type ;
-    cto:isWholesaleOnly "true"^^xsd:boolean ;
+    cto:hasOrganizationTypeAssignment ex:openreach_type_assignment ;
+    cto:hasWholesaleOnlyStatus ex:openreach_wholesale_status .
+
+ex:openreach_type_assignment a cto:OrganizationTypeAssignment ;
+    cto:assignedOrganizationType ex:network_operator_type .
+
+ex:openreach_wholesale_status a cto:WholesaleOnlyStatus ;
+    cto:isWholesaleOnly "true"^^xsd:boolean .
+
+ex:openreach_network_ownership a cto:NetworkOwnershipRelationship ;
+    cto:ownerNetOp ex:openreach ;
     cto:ownsNetwork ex:openreach_fttp .
 
 # Network
@@ -32,8 +40,7 @@ ex:openreach_fttp a cto:Network ;
     rdfs:label "Openreach FTTP Network" ;
     cto:isNetworkType ex:broadband_network_type ;
     cto:usesLink ex:fttp_link ;
-    cto:usesLinkStandard ex:fttp_standard ;
-    cto:hasCoverageArea ex:w2_1bt .
+    cto:usesLinkStandard ex:fttp_standard .
 
 # Link Type and Standard
 ex:fttp_link a cto:Link ;
@@ -46,21 +53,27 @@ ex:fttp_standard a cto:LinkStandard ;
 # ISP
 ex:sky a foaf:Organization ;
     rdfs:label "Sky" ;
-    cto:isOrganizationType ex:isp_type ;
-    cto:usesNetwork ex:openreach_fttp ;
-    cto:offersService ex:sky_ultrafast .
+    cto:hasOrganizationTypeAssignment ex:sky_type_assignment ;
+    cto:offersBroadbandService ex:sky_ultrafast .
+
+ex:sky_type_assignment a cto:OrganizationTypeAssignment ;
+    cto:assignedOrganizationType ex:isp_type .
+
+ex:sky_network_usage a cto:NetworkUsageRelationship ;
+    cto:usedByISP ex:sky ;
+    cto:usesNetwork ex:openreach_fttp .
 
 # Broadband Service
 ex:sky_ultrafast a cto:BroadbandService ;
     rdfs:label "Sky Ultrafast Broadband" ;
-    cto:hasServiceName "Sky Ultrafast" ;
-    cto:hasFastestDown "300 Mbps" ;
-    cto:hasFastestUp "50 Mbps" ;
-    cto:hasGuaranteedDown "100 Mbps" ;
-    cto:hasMonthlyCost "35.00"^^xsd:float ;
-    cto:hasSetupCost "0.00"^^xsd:float ;
-    cto:hasBundleHomePhone "true"^^xsd:boolean ;
-    cto:hasBundleVideo "false"^^xsd:boolean .
+    cto:hasFastestDownloadSpeed "300"^^xsd:decimal ;
+    cto:hasFastestUploadSpeed "50"^^xsd:decimal ;
+    cto:hasGuaranteedDownloadSpeed "100"^^xsd:decimal ;
+    cto:hasMonthlyCost "35.00"^^xsd:decimal ;
+    cto:hasSetupCost "0.00"^^xsd:decimal ;
+    cto:hasHomePhoneBundle "true"^^xsd:boolean ;
+    cto:hasVideoBundle "false"^^xsd:boolean ;
+    cto:hasTechnology ex:fttp_link .
 
 # Location
 ex:w2_1bt a dcterms:Location ;

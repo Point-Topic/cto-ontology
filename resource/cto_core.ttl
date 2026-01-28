@@ -1,0 +1,266 @@
+@prefix : <https://github.com/Point-Topic/cto-ontology/> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix geo: <http://www.w3.org/2003/01/geo/> .
+@prefix gist: <https://w3id.org/semanticarts/ontology/gistCore#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vann: <http://purl.org/vacob/vann/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://github.com/Point-Topic/cto-ontology/> a owl:Ontology ;
+    cc:license <http://creativecommons.org/licenses/by/3.0/> ;
+    dcterms:contributor <https://www.linkedin.com/in/oliver-johnson-1a3ba2/> ,
+                   <https://www.linkedin.com/in/arnold-r-kürsteiner-4171981a2/> ,
+                   <http://www.macs.hw.ac.uk/~ajg33/> ,
+                   <https://www.eng.ed.ac.uk/about/people/mr-mohammad-dehghani-soltani> ,
+                   <https://www.hw.ac.uk/staff/uk/eps/stephen-mclaughlin.htm> ,
+                   <https://www.gla.ac.uk/schools/computing/staff/qianruzhou/> ;
+    dcterms:creator <https://www.point-topic.com/> ;
+    dcterms:description "Core entities of the Common Telecoms Ontology - foundational telecom industry concepts" ;
+    dcterms:issued "2024-7-1"^^xsd:date ;
+    dcterms:modified "2026-1-28"^^xsd:date ;
+    dcterms:publisher <https://www.point-topic.com/> ;
+    dcterms:rights "Copyright © 2024 Point Topic" ;
+    dcterms:title "Common Telecoms Ontology - Core"@en ;
+    vann:preferredNamespacePrefix "cto" ;
+    vann:preferredNamespaceUri "https://github.com/Point-Topic/cto-ontology/" ;
+    rdfs:comment "Version 1.1.0: Core entities."@en ;
+    owl:versionInfo 1.1.0 .
+
+# Annotation Properties
+cc:license a owl:AnnotationProperty .
+dcterms:contributor a owl:AnnotationProperty .
+dcterms:creator a owl:AnnotationProperty .
+dcterms:description a owl:AnnotationProperty .
+dcterms:issued a owl:AnnotationProperty .
+dcterms:modified a owl:AnnotationProperty .
+dcterms:publisher a owl:AnnotationProperty .
+dcterms:rights a owl:AnnotationProperty .
+dcterms:title a owl:AnnotationProperty .
+owl:versionInfo a owl:AnnotationProperty .
+rdfs:comment a owl:AnnotationProperty .
+rdfs:isDefinedBy a owl:AnnotationProperty .
+rdfs:label a owl:AnnotationProperty .
+vann:preferredNamespacePrefix a owl:AnnotationProperty .
+vann:preferredNamespaceUri a owl:AnnotationProperty .
+
+# Classes
+
+# Base Classes
+:PhysicalEntity a owl:Class ;
+    rdfs:comment "A physical entity. Generally, an entity that occupies space in the physical world. Mutually exclusive with conceptual entities." ;
+    owl:disjointWith :ConceptualEntity .
+
+:ConceptualEntity a owl:Class ;
+    rdfs:comment "A conceptual entity. Generally, an entity that does not occupy space in the physical world. Mutually exclusive with physical entities." ;
+    owl:disjointWith :PhysicalEntity .
+
+:PhysicalInfrastructure a owl:Class ;
+    rdfs:comment "Describe all the physical resources in a telecommunication network system, which is divided into two main modules, namely, device and link (under network). Please be reminded the electromagnetic wave (which is the links of all wireless communication networks), even if it is invisible, physically exists." ;
+    owl:disjointWith :ConceptualEntity ;
+    rdfs:subClassOf :PhysicalEntity .
+
+# Spatial Classes
+dcterms:Location a owl:Class ;
+    rdfs:comment "A spatial region or named place." ;
+    rdfs:subClassOf geo:SpatialThing .
+
+:Country a owl:Class ;
+    rdfs:comment "A nation with its own government, occupying a particular territory." ;
+    rdfs:subClassOf dcterms:Location .
+
+# Organization Classes
+foaf:Person a owl:Class ;
+    rdfs:subClassOf :PhysicalEntity ;
+    owl:disjointWith foaf:Organization .
+
+foaf:Organization a owl:Class ;
+    rdfs:subClassOf :PhysicalEntity ;
+    owl:disjointWith foaf:Person .
+
+:OrganizationType a owl:Class ;
+    rdfs:comment "A classification type for organizations based on their role in the telecom industry (e.g., ISP, Network Operator, Non-Telco Organization)." ;
+    rdfs:subClassOf :ConceptualEntity .
+
+:OrganizationTypeAssignment a owl:Class .
+
+:ConsolidationEvent a owl:Class .
+
+# Network Classes
+:Network a owl:Class ;
+    rdfs:subClassOf :PhysicalInfrastructure .
+
+:NetworkType a owl:Class ;
+    rdfs:comment "A classification type for networks based on their technology and service delivery method (e.g., Broadband Network, Satellite Network, Mobile Network, Hybrid Network, Other Network)." ;
+    rdfs:subClassOf :ConceptualEntity .
+
+:NetworkUsageRelationship a owl:Class ;
+    rdfs:label "Network Usage Relationship" .
+
+:NetworkOwnershipRelationship a owl:Class .
+
+# Link Classes
+:Link a owl:Class ;
+    rdfs:comment "The physical transmission medium or infrastructure type used to connect a premises or network endpoint to the broadband access network." ;
+    rdfs:subClassOf :PhysicalEntity .
+
+:LinkStandard a owl:Class ;
+    rdfs:comment "The data transmission standard or protocol used over the physical transmission medium/infrastructure (Link) to deliver broadband connectivity." ;
+    rdfs:subClassOf :ConceptualEntity .
+
+# Measurement Classes
+:MeasurementRecord a owl:Class .
+
+gist:Aspect a owl:Class ;
+    rdfs:label "A measurable characteristic such as length, weight, cost, cycle time, or defect rate." .
+
+gist:Magnitude a owl:Class ;
+    rdfs:label "The amount of a measurable characteristic (aspect)." .
+
+:UnitOfMeasure a owl:Class .
+
+:Accuracy a owl:Class ;
+    rdfs:comment "how accurate a measurement is expected to be (high/medium/low)" .
+
+# Spatial Relationship Classes
+:ContainmentAssertion a owl:Class .
+
+geo:SpatialRelation a owl:Class .
+
+geo:Geometry a owl:Class ;
+    rdfs:subClassOf geo:SpatialObject ;
+    rdfs:isDefinedBy : ,
+        <http://www.opengis.net/spec/geosparql/1.0/req/geometry-extension/geometry-class> ,
+        <http://www.opengis.net/spec/geosparql/1.1/req/geometry-extension/geometry-class> .
+
+# Object Properties
+
+# Organization Object Properties
+:hasOrganizationTypeAssignment a owl:ObjectProperty ;
+    rdfs:domain foaf:Organization ;
+    rdfs:range :OrganizationTypeAssignment .
+
+:assignedOrganizationType a owl:ObjectProperty ;
+    rdfs:domain :OrganizationTypeAssignment ;
+    rdfs:range :OrganizationType .
+
+# Consolidation Object Properties
+:consolidatedTo a owl:ObjectProperty ;
+    rdfs:domain :ConsolidationEvent ;
+    rdfs:range foaf:Organization .
+
+:consolidatedFrom a owl:ObjectProperty ;
+    rdfs:domain :ConsolidationEvent ;
+    rdfs:range foaf:Organization .
+
+# Network Object Properties
+:isNetworkType a owl:ObjectProperty ;
+    rdfs:comment "Relates a network to its type classification (e.g., Broadband Network, Satellite Network, Mobile Network, Hybrid Network, Other Network)." ;
+    rdfs:domain :Network ;
+    rdfs:range :NetworkType .
+
+:usesLink a owl:ObjectProperty ;
+    rdfs:comment "Relates a network to the link technology it uses." ;
+    rdfs:domain :Network ;
+    rdfs:range :Link .
+
+:usesLinkStandard a owl:ObjectProperty ;
+    rdfs:comment "Relates a network to the protocol/standard used by the physical link infrastructure." ;
+    rdfs:domain :Network ;
+    rdfs:range :LinkStandard .
+
+:supportsLinkStandard a owl:ObjectProperty ;
+    rdfs:comment "Relates a physical transmission medium/infrastructure link to the protocol/standard." ;
+    rdfs:domain :Link ;
+    rdfs:range :LinkStandard .
+
+# Network Usage and Ownership
+:usesNetwork a owl:ObjectProperty ;
+    rdfs:domain :NetworkUsageRelationship ;
+    rdfs:range :Network ;
+    rdfs:label "uses network" .
+
+:usedByISP a owl:ObjectProperty ;
+    rdfs:domain :NetworkUsageRelationship ;
+    rdfs:range foaf:Organization ;
+    rdfs:label "used by ISP" .
+
+:ownerNetOp a owl:ObjectProperty ;
+    rdfs:domain :NetworkOwnershipRelationship ;
+    rdfs:range foaf:Organization .
+
+:ownsNetwork a owl:ObjectProperty ;
+    rdfs:domain :NetworkOwnershipRelationship ;
+    rdfs:range :Network .
+
+# Measurement Object Properties
+:hasMeasurementRecord a owl:ObjectProperty ;
+    rdfs:range :MeasurementRecord ;
+    rdfs:comment "Relates something being measured to a measurement record." .
+
+gist:hasAspect a owl:ObjectProperty ;
+    rdfs:comment "Relates a measurement to its aspect (measurable characteristic)." ;
+    rdfs:domain :MeasurementRecord ;
+    rdfs:range gist:Aspect .
+
+:hasUnitOfMeasure a owl:ObjectProperty ;
+    rdfs:comment "Relates a magnitude to a unit of measure." ;
+    rdfs:domain :MeasurementRecord ;
+    rdfs:range :UnitOfMeasure .
+
+:hasAccuracy a owl:ObjectProperty ;
+    rdfs:comment "Relates a magnitude to the accuracy of its numeric value." ;
+    rdfs:domain :MeasurementRecord ;
+    rdfs:range :Accuracy .
+
+# Spatial Object Properties
+:hasSpatialSubject a owl:ObjectProperty ;
+    rdfs:domain :ContainmentAssertion ;
+    rdfs:range dcterms:Location .
+
+:hasSpatialObject a owl:ObjectProperty ;
+    rdfs:domain :ContainmentAssertion ;
+    rdfs:range dcterms:Location .
+
+:hasSpatialRelation a owl:ObjectProperty ;
+    rdfs:domain :ContainmentAssertion ;
+    rdfs:range geo:SpatialRelation .
+
+:inCountry a owl:ObjectProperty ;
+    rdfs:subPropertyOf geo:sfWithin .
+
+# Spatial Relations
+geo:sfWithin a geo:SpatialRelation, owl:TransitiveProperty .
+
+geo:sfContains a geo:SpatialRelation, a owl:TransitiveProperty .
+
+geo:sfIntersects a geo:SpatialRelation, a owl:TransitiveProperty .
+
+# Data Properties
+
+# Temporal Data Properties
+:validFrom a owl:DatatypeProperty ;
+    rdfs:comment "The date from which this entity or relationship is valid." ;
+    rdfs:range xsd:date .
+
+:validTo a owl:DatatypeProperty ;
+    rdfs:comment "The date until which this entity or relationship is valid." ;
+    rdfs:range xsd:date .
+
+# Consolidation Data Properties
+:ConsolAnnounceDate a owl:DatatypeProperty ;
+    rdfs:domain :ConsolidationEvent ;
+    rdfs:range xsd:date ;
+    rdfs:comment "Date when consolidation was first announced" .
+
+:ConsolCompletedDate a owl:DatatypeProperty ;
+    rdfs:domain :ConsolidationEvent ;
+    rdfs:range xsd:date ;
+    rdfs:comment "Date when consolidation was completed" .
+
+# Measurement Data Properties
+gist:hasMagnitude a owl:DatatypeProperty ;
+    rdfs:domain :MeasurementRecord ;
+    rdfs:comment "Relates a measurement record to a magnitude." .

@@ -1,0 +1,579 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="https://github.com/Point-Topic/cto-ontology/"
+     xml:base="https://github.com/Point-Topic/cto-ontology/"
+     xmlns:cc="http://creativecommons.org/ns#"
+     xmlns:dcat="https://www.w3.org/TR/vocab-dcat-3/"
+     xmlns:dcterms="http://purl.org/dc/terms/"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:geo="http://www.w3.org/2003/01/geo/"
+     xmlns:gist="https://w3id.org/semanticarts/ontology/gistCore#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:schema="https://schema.org/"
+     xmlns:vann="http://purl.org/vacob/vann/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+    <owl:Ontology rdf:about="https://github.com/Point-Topic/cto-ontology/">
+        <cc:license rdf:resource="http://creativecommons.org/licenses/by/3.0/"/>
+        <dcterms:contributor rdf:resource="https://www.linkedin.com/in/oliver-johnson-1a3ba2/"/>
+        <dcterms:contributor rdf:resource="https://www.linkedin.com/in/arnold-r-kürsteiner-4171981a2/"/>
+        <dcterms:contributor rdf:resource="http://www.macs.hw.ac.uk/~ajg33/"/>
+        <dcterms:contributor rdf:resource="https://www.eng.ed.ac.uk/about/people/mr-mohammad-dehghani-soltani"/>
+        <dcterms:contributor rdf:resource="https://www.hw.ac.uk/staff/uk/eps/stephen-mclaughlin.htm"/>
+        <dcterms:contributor rdf:resource="https://www.gla.ac.uk/schools/computing/staff/qianruzhou/"/>
+        <dcterms:creator rdf:resource="https://www.point-topic.com/"/>
+        <dcterms:description>Extended Common Telecoms Ontology including core, business, and document entities</dcterms:description>
+        <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-7-1</dcterms:issued>
+        <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-1-28</dcterms:modified>
+        <dcterms:publisher rdf:resource="https://www.point-topic.com/"/>
+        <dcterms:rights>Copyright © 2024 Point Topic</dcterms:rights>
+        <dcterms:title xml:lang="en">Common Telecoms Ontology - Extended</dcterms:title>
+        <vann:preferredNamespacePrefix>cto</vann:preferredNamespacePrefix>
+        <vann:preferredNamespaceUri>https://github.com/Point-Topic/cto-ontology/</vann:preferredNamespaceUri>
+        <rdfs:comment xml:lang="en">Version 1.1.0: Extended ontology with business and document support</rdfs:comment>
+        <owl:versionInfo>1.1.0</owl:versionInfo>
+    </owl:Ontology>
+    
+    <!-- Annotation Properties -->
+    <owl:AnnotationProperty rdf:about="http://creativecommons.org/ns#license"/>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/contributor"/>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/creator"/>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/description"/>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/issued"/>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/modified"/>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/publisher"/>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/rights"/>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/title"/>
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2002/07/owl#versionInfo"/>
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2000/01/rdf-schema#comment"/>
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2000/01/rdf-schema#isDefinedBy"/>
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2000/01/rdf-schema#label"/>
+    <owl:AnnotationProperty rdf:about="http://purl.org/vacob/vann/preferredNamespacePrefix"/>
+    <owl:AnnotationProperty rdf:about="http://purl.org/vacob/vann/preferredNamespaceUri"/>
+
+    <!-- Classes -->
+    
+    <!-- Base Classes -->
+    <owl:Class rdf:about="#PhysicalEntity">
+        <rdfs:comment>A physical entity. Generally, an entity that occupies space in the physical world. Mutually exclusive with conceptual entities.</rdfs:comment>
+        <owl:disjointWith rdf:resource="#ConceptualEntity"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#ConceptualEntity">
+        <rdfs:comment>A conceptual entity. Generally, an entity that does not occupy space in the physical world. Mutually exclusive with physical entities.</rdfs:comment>
+        <owl:disjointWith rdf:resource="#PhysicalEntity"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#PhysicalInfrastructure">
+        <rdfs:comment>Describe all the physical resources in a telecommunication network system, which is divided into two main modules, namely, device and link (under network).</rdfs:comment>
+        <owl:disjointWith rdf:resource="#ConceptualEntity"/>
+        <rdfs:subClassOf rdf:resource="#PhysicalEntity"/>
+    </owl:Class>
+
+    <!-- Spatial Classes -->
+    <owl:Class rdf:about="http://purl.org/dc/terms/Location">
+        <rdfs:comment>A spatial region or named place.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2003/01/geo/SpatialThing"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Country">
+        <rdfs:comment>A nation with its own government, occupying a particular territory.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://purl.org/dc/terms/Location"/>
+    </owl:Class>
+
+    <!-- Organization Classes -->
+    <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Person">
+        <rdfs:subClassOf rdf:resource="#PhysicalEntity"/>
+        <owl:disjointWith rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Organization">
+        <rdfs:subClassOf rdf:resource="#PhysicalEntity"/>
+        <owl:disjointWith rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#OrganizationType">
+        <rdfs:comment>A classification type for organizations based on their role in the telecom industry (e.g., ISP, Network Operator, Non-Telco Organization).</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="#ConceptualEntity"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#OrganizationTypeAssignment"/>
+
+    <owl:Class rdf:about="#BusinessOnlyStatus">
+        <rdfs:label>Business-only status assertion of an organization</rdfs:label>
+    </owl:Class>
+
+    <owl:Class rdf:about="#RetailOnlyStatus">
+        <rdfs:label>Retail-only status assertion of an organization</rdfs:label>
+    </owl:Class>
+
+    <owl:Class rdf:about="#WholesaleOnlyStatus">
+        <rdfs:label>Wholesale-only status assertion of an organization</rdfs:label>
+    </owl:Class>
+
+    <owl:Class rdf:about="#CorporateRelationship"/>
+
+    <owl:Class rdf:about="#CorporateRelationshipType"/>
+
+    <owl:Class rdf:about="#ConsolidationEvent"/>
+
+    <!-- Network Classes -->
+    <owl:Class rdf:about="#Network">
+        <rdfs:subClassOf rdf:resource="#PhysicalInfrastructure"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#NetworkType">
+        <rdfs:comment>A classification type for networks based on their technology and service delivery method (e.g., Broadband Network, Satellite Network, Mobile Network, Hybrid Network, Other Network).</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="#ConceptualEntity"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#NetworkUsageRelationship">
+        <rdfs:label>Network Usage Relationship</rdfs:label>
+    </owl:Class>
+
+    <owl:Class rdf:about="#NetworkOwnershipRelationship"/>
+
+    <!-- Link Classes -->
+    <owl:Class rdf:about="#Link">
+        <rdfs:comment>The physical transmission medium or infrastructure type used to connect a premises or network endpoint to the broadband access network.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="#PhysicalEntity"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#LinkStandard">
+        <rdfs:comment>The data transmission standard or protocol used over the physical transmission medium/infrastructure (Link) to deliver broadband connectivity.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="#ConceptualEntity"/>
+    </owl:Class>
+
+    <!-- Service Classes -->
+    <owl:Class rdf:about="#Service"/>
+
+    <owl:Class rdf:about="#BroadbandService">
+        <rdfs:subClassOf rdf:resource="#Service"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#CellularService">
+        <rdfs:subClassOf rdf:resource="#Service"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#PTService">
+        <rdfs:subClassOf rdf:resource="#Service"/>
+    </owl:Class>
+
+    <!-- Measurement Classes -->
+    <owl:Class rdf:about="#MeasurementRecord"/>
+
+    <owl:Class rdf:about="https://w3id.org/semanticarts/ontology/gistCore#Aspect">
+        <rdfs:label>A measurable characteristic such as length, weight, cost, cycle time, or defect rate.</rdfs:label>
+    </owl:Class>
+
+    <owl:Class rdf:about="https://w3id.org/semanticarts/ontology/gistCore#Magnitude">
+        <rdfs:label>The amount of a measurable characteristic (aspect).</rdfs:label>
+    </owl:Class>
+
+    <owl:Class rdf:about="#UnitOfMeasure"/>
+
+    <owl:Class rdf:about="#Accuracy">
+        <rdfs:comment>how accurate a measurement is expected to be (high/medium/low)</rdfs:comment>
+    </owl:Class>
+
+    <!-- Spatial Relationship Classes -->
+    <owl:Class rdf:about="#ContainmentAssertion"/>
+
+    <owl:Class rdf:about="http://www.w3.org/2003/01/geo/SpatialRelation"/>
+
+    <owl:Class rdf:about="http://www.w3.org/2003/01/geo/Geometry">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2003/01/geo/SpatialObject"/>
+        <rdfs:isDefinedBy rdf:resource="https://github.com/Point-Topic/cto-ontology/"/>
+        <rdfs:isDefinedBy rdf:resource="http://www.opengis.net/spec/geosparql/1.0/req/geometry-extension/geometry-class"/>
+        <rdfs:isDefinedBy rdf:resource="http://www.opengis.net/spec/geosparql/1.1/req/geometry-extension/geometry-class"/>
+    </owl:Class>
+
+    <!-- DCAT Classes -->
+    <owl:Class rdf:about="https://www.w3.org/TR/vocab-dcat-3/Catalog">
+        <rdfs:comment>A catalogue or repository that hosts the Datasets or Data Services being described.</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="https://www.w3.org/TR/vocab-dcat-3/CatalogRecord">
+        <rdfs:comment>A description of a Catalogued Resource's entry in the Catalogue.</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="https://www.w3.org/TR/vocab-dcat-3/CataloguedResource">
+        <rdfs:comment>A resource published or curated by a single agent.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="#ConceptualEntity"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="https://www.w3.org/TR/vocab-dcat-3/Resource">
+        <rdfs:comment>Resource published or curated by a single agent.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="https://www.w3.org/TR/vocab-dcat-3/CataloguedResource"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="https://www.w3.org/TR/vocab-dcat-3/Dataset">
+        <rdfs:comment>A conceptual entity that represents the information published. In practice not limited to a dataset, can also be an article, webpage, etc.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="https://www.w3.org/TR/vocab-dcat-3/CataloguedResource"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="https://www.w3.org/TR/vocab-dcat-3/DatasetSeries">
+        <rdfs:comment>A collection of datasets that are published separately, but share some characteristics that group them.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="https://www.w3.org/TR/vocab-dcat-3/CataloguedResource"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="https://www.w3.org/TR/vocab-dcat-3/DataService">
+        <rdfs:comment>A collection of operations that provides access to one or more datasets or data processing functions.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="https://www.w3.org/TR/vocab-dcat-3/CataloguedResource"/>
+    </owl:Class>
+
+    <!-- Object Properties -->
+    
+    <!-- Organization Object Properties -->
+    <owl:ObjectProperty rdf:about="#hasOrganizationTypeAssignment">
+        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
+        <rdfs:range rdf:resource="#OrganizationTypeAssignment"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#assignedOrganizationType">
+        <rdfs:domain rdf:resource="#OrganizationTypeAssignment"/>
+        <rdfs:range rdf:resource="#OrganizationType"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#hasBusinessOnlyStatus">
+        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
+        <rdfs:range rdf:resource="#BusinessOnlyStatus"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#hasRetailOnlyStatus">
+        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
+        <rdfs:range rdf:resource="#RetailOnlyStatus"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#hasWholesaleOnlyStatus">
+        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
+        <rdfs:range rdf:resource="#WholesaleOnlyStatus"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#hasCorporateRelationshipType">
+        <rdfs:domain rdf:resource="#CorporateRelationship"/>
+        <rdfs:range rdf:resource="#CorporateRelationshipType"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#relationshipFrom">
+        <rdfs:domain rdf:resource="#CorporateRelationship"/>
+        <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#RelationshipTo">
+        <rdfs:domain rdf:resource="#CorporateRelationship"/>
+        <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
+    </owl:ObjectProperty>
+
+    <!-- Consolidation Object Properties -->
+    <owl:ObjectProperty rdf:about="#consolidatedTo">
+        <rdfs:domain rdf:resource="#ConsolidationEvent"/>
+        <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#consolidatedFrom">
+        <rdfs:domain rdf:resource="#ConsolidationEvent"/>
+        <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
+    </owl:ObjectProperty>
+
+    <!-- Network Object Properties -->
+    <owl:ObjectProperty rdf:about="#isNetworkType">
+        <rdfs:comment>Relates a network to its type classification (e.g., Broadband Network, Satellite Network, Mobile Network, Hybrid Network, Other Network).</rdfs:comment>
+        <rdfs:domain rdf:resource="#Network"/>
+        <rdfs:range rdf:resource="#NetworkType"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#usesLink">
+        <rdfs:comment>Relates a network to the link technology it uses.</rdfs:comment>
+        <rdfs:domain rdf:resource="#Network"/>
+        <rdfs:range rdf:resource="#Link"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#usesLinkStandard">
+        <rdfs:comment>Relates a network to the protocol/standard used by the physical link infrastructure.</rdfs:comment>
+        <rdfs:domain rdf:resource="#Network"/>
+        <rdfs:range rdf:resource="#LinkStandard"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#supportsLinkStandard">
+        <rdfs:comment>Relates a physical transmission medium/infrastructure link to the protocol/standard.</rdfs:comment>
+        <rdfs:domain rdf:resource="#Link"/>
+        <rdfs:range rdf:resource="#LinkStandard"/>
+    </owl:ObjectProperty>
+
+    <!-- Network Usage and Ownership -->
+    <owl:ObjectProperty rdf:about="#usesNetwork">
+        <rdfs:domain rdf:resource="#NetworkUsageRelationship"/>
+        <rdfs:range rdf:resource="#Network"/>
+        <rdfs:label>uses network</rdfs:label>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#usedByISP">
+        <rdfs:domain rdf:resource="#NetworkUsageRelationship"/>
+        <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
+        <rdfs:label>used by ISP</rdfs:label>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#ownerNetOp">
+        <rdfs:domain rdf:resource="#NetworkOwnershipRelationship"/>
+        <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#ownsNetwork">
+        <rdfs:domain rdf:resource="#NetworkOwnershipRelationship"/>
+        <rdfs:range rdf:resource="#Network"/>
+    </owl:ObjectProperty>
+
+    <!-- Service Object Properties -->
+    <owl:ObjectProperty rdf:about="#offersService">
+        <owl:equivalentProperty rdf:resource="https://schema.org/provider"/>
+        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
+        <rdfs:range rdf:resource="#Service"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#offersBroadbandService">
+        <rdfs:subPropertyOf rdf:resource="#offersService"/>
+        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
+        <rdfs:range rdf:resource="#BroadbandService"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#offersCellularService">
+        <rdfs:subPropertyOf rdf:resource="#offersService"/>
+        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
+        <rdfs:range rdf:resource="#CellularService"/>
+    </owl:ObjectProperty>
+
+    <!-- Service Schema Equivalence -->
+    <rdf:Description rdf:about="#Service">
+        <owl:equivalentClass rdf:resource="https://schema.org/Service"/>
+    </rdf:Description>
+
+    <!-- Measurement Object Properties -->
+    <owl:ObjectProperty rdf:about="#hasMeasurementRecord">
+        <rdfs:range rdf:resource="#MeasurementRecord"/>
+        <rdfs:comment>Relates something being measured to a measurement record.</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#hasMeasurementLocation">
+        <rdfs:domain rdf:resource="#MeasurementRecord"/>
+        <rdfs:range rdf:resource="http://purl.org/dc/terms/Location"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/semanticarts/ontology/gistCore#hasAspect">
+        <rdfs:comment>Relates a measurement to its aspect (measurable characteristic).</rdfs:comment>
+        <rdfs:domain rdf:resource="#MeasurementRecord"/>
+        <rdfs:range rdf:resource="https://w3id.org/semanticarts/ontology/gistCore#Aspect"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#hasUnitOfMeasure">
+        <rdfs:comment>Relates a magnitude to a unit of measure.</rdfs:comment>
+        <rdfs:domain rdf:resource="#MeasurementRecord"/>
+        <rdfs:range rdf:resource="#UnitOfMeasure"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#hasAccuracy">
+        <rdfs:comment>Relates a magnitude to the accuracy of its numeric value.</rdfs:comment>
+        <rdfs:domain rdf:resource="#MeasurementRecord"/>
+        <rdfs:range rdf:resource="#Accuracy"/>
+    </owl:ObjectProperty>
+
+    <!-- Spatial Object Properties -->
+    <owl:ObjectProperty rdf:about="#hasSpatialSubject">
+        <rdfs:domain rdf:resource="#ContainmentAssertion"/>
+        <rdfs:range rdf:resource="http://purl.org/dc/terms/Location"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#hasSpatialObject">
+        <rdfs:domain rdf:resource="#ContainmentAssertion"/>
+        <rdfs:range rdf:resource="http://purl.org/dc/terms/Location"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#hasSpatialRelation">
+        <rdfs:domain rdf:resource="#ContainmentAssertion"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2003/01/geo/SpatialRelation"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#inCountry">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2003/01/geo/sfWithin"/>
+    </owl:ObjectProperty>
+
+    <!-- Spatial Relations -->
+    <rdf:Description rdf:about="http://www.w3.org/2003/01/geo/sfWithin">
+        <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/SpatialRelation"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://www.w3.org/2003/01/geo/sfContains">
+        <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/SpatialRelation"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://www.w3.org/2003/01/geo/sfIntersects">
+        <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/SpatialRelation"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+    </rdf:Description>
+
+    <!-- DCAT Object Properties -->
+    <owl:ObjectProperty rdf:about="https://www.w3.org/TR/vocab-dcat-3/record">
+        <rdfs:comment>A record describing the registration of a single resource (e.g., a dataset, a data service) that is part of the catalog.</rdfs:comment>
+        <rdfs:domain rdf:resource="https://www.w3.org/TR/vocab-dcat-3/Catalog"/>
+        <rdfs:range rdf:resource="https://www.w3.org/TR/vocab-dcat-3/CatalogRecord"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://xmlns.com/foaf/0.1/primaryTopic">
+        <rdfs:comment>The dcat:Resource (dataset or service) described in the record.</rdfs:comment>
+        <rdfs:domain rdf:resource="https://www.w3.org/TR/vocab-dcat-3/CatalogRecord"/>
+        <rdfs:range rdf:resource="https://www.w3.org/TR/vocab-dcat-3/Resource"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="https://www.w3.org/TR/vocab-dcat-3/servesDataset">
+        <rdfs:comment>A collection of data that this data service can distribute.</rdfs:comment>
+        <rdfs:domain rdf:resource="https://www.w3.org/TR/vocab-dcat-3/DataService"/>
+        <rdfs:range rdf:resource="https://www.w3.org/TR/vocab-dcat-3/Dataset"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="https://www.w3.org/TR/vocab-dcat-3/inSeries">
+        <rdfs:comment>A dataset series of which the dataset is part.</rdfs:comment>
+        <rdfs:domain rdf:resource="https://www.w3.org/TR/vocab-dcat-3/Dataset"/>
+        <rdfs:range rdf:resource="https://www.w3.org/TR/vocab-dcat-3/DatasetSeries"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="https://www.w3.org/TR/vocab-dcat-3/geographicalCoverage">
+        <rdfs:comment>The geographical area covered by the resource.</rdfs:comment>
+        <rdfs:range rdf:resource="http://purl.org/dc/terms/Location"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://purl.org/dc/terms/publisher">
+        <rdfs:comment>The entity responsible for making the resource available.</rdfs:comment>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://www.w3.org/TR/vocab-dcat-3/Catalog"/>
+                    <rdf:Description rdf:about="https://www.w3.org/TR/vocab-dcat-3/Resource"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="https://www.w3.org/TR/vocab-dcat-3/isPublisher">
+        <rdfs:comment>An organization responsible for making a catalogued resource available.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
+        <rdfs:range rdf:resource="https://www.w3.org/TR/vocab-dcat-3/CataloguedResource"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="https://www.w3.org/TR/vocab-dcat-3/hasRecord">
+        <rdfs:comment>A catalogue record that is part of the catalogue.</rdfs:comment>
+        <rdfs:domain rdf:resource="https://www.w3.org/TR/vocab-dcat-3/Catalog"/>
+        <rdfs:range rdf:resource="https://www.w3.org/TR/vocab-dcat-3/Dataset"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="https://schema.org/provider"/>
+
+    <!-- Data Properties -->
+    
+    <!-- Temporal Data Properties -->
+    <owl:DatatypeProperty rdf:about="#validFrom">
+        <rdfs:comment>The date from which this entity or relationship is valid.</rdfs:comment>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="#validTo">
+        <rdfs:comment>The date until which this entity or relationship is valid.</rdfs:comment>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+    </owl:DatatypeProperty>
+
+    <!-- Organization Data Properties -->
+    <owl:DatatypeProperty rdf:about="#isBusinessOnly">
+        <rdfs:domain rdf:resource="#BusinessOnlyStatus"/>
+        <rdfs:comment>Specifies whether an organization is business-only (exclusively sells to business customers).</rdfs:comment>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="#isRetailOnly">
+        <rdfs:domain rdf:resource="#RetailOnlyStatus"/>
+        <rdfs:comment>Specifies whether an organization is retail-only (does not own any network infrastructure).</rdfs:comment>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="#isWholesaleOnly">
+        <rdfs:domain rdf:resource="#WholesaleOnlyStatus"/>
+        <rdfs:comment>Specifies whether an organization is only wholesale (does not sell services directly to end-users).</rdfs:comment>
+    </owl:DatatypeProperty>
+
+    <!-- Consolidation Data Properties -->
+    <owl:DatatypeProperty rdf:about="#ConsolAnnounceDate">
+        <rdfs:domain rdf:resource="#ConsolidationEvent"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:comment>Date when consolidation was first announced</rdfs:comment>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="#ConsolCompletedDate">
+        <rdfs:domain rdf:resource="#ConsolidationEvent"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:comment>Date when consolidation was completed</rdfs:comment>
+    </owl:DatatypeProperty>
+
+    <!-- Broadband Service Data Properties -->
+    <owl:ObjectProperty rdf:about="#hasTechnology">
+        <rdfs:domain rdf:resource="#BroadbandService"/>
+        <rdfs:range rdf:resource="#Link"/>
+    </owl:ObjectProperty>
+
+    <owl:DatatypeProperty rdf:about="#hasFastestDownloadSpeed">
+        <rdfs:domain rdf:resource="#BroadbandService"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="#hasFastestUploadSpeed">
+        <rdfs:domain rdf:resource="#BroadbandService"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="#hasGuaranteedDownloadSpeed">
+        <rdfs:domain rdf:resource="#BroadbandService"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="#hasGuaranteedUploadSpeed">
+        <rdfs:domain rdf:resource="#BroadbandService"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="#hasMonthlyCost">
+        <rdfs:domain rdf:resource="#BroadbandService"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="#hasSetupCost">
+        <rdfs:domain rdf:resource="#BroadbandService"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="#hasLocalCurrency">
+        <rdfs:domain rdf:resource="#BroadbandService"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="#hasContractLength">
+        <rdfs:domain rdf:resource="#BroadbandService"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="#hasHomePhoneBundle">
+        <rdfs:domain rdf:resource="#BroadbandService"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="#hasMobilePhoneBundle">
+        <rdfs:domain rdf:resource="#BroadbandService"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="#hasVideoBundle">
+        <rdfs:domain rdf:resource="#BroadbandService"/>
+    </owl:DatatypeProperty>
+
+    <!-- Measurement Data Properties -->
+    <owl:DatatypeProperty rdf:about="https://w3id.org/semanticarts/ontology/gistCore#hasMagnitude">
+        <rdfs:domain rdf:resource="#MeasurementRecord"/>
+        <rdfs:comment>Relates a measurement record to a magnitude.</rdfs:comment>
+    </owl:DatatypeProperty>
+
+</rdf:RDF>

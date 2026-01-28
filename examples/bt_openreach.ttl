@@ -4,7 +4,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix cto: <https://github.com/Point-Topic/cto-ontology/> .
-@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix geo: <http://www.w3.org/2003/01/geo/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix ex: <https://example.org/> .
 
@@ -22,27 +22,41 @@ ex:broadband_network_type a cto:NetworkType ;
 # Network Operator
 ex:openreach a foaf:Organization ;
     rdfs:label "Openreach" ;
-    cto:isOrganizationType ex:network_operator_type ;
-    cto:isWholesaleOnly "true"^^xsd:boolean ;
-    cto:ownsNetwork ex:openreach_fttp ;
+    cto:hasOrganizationTypeAssignment ex:openreach_type_assignment ;
+    cto:hasWholesaleOnlyStatus ex:openreach_wholesale_status ;
     rdfs:comment "Openreach is a British telecommunications infrastructure company." .
+
+ex:openreach_type_assignment a cto:OrganizationTypeAssignment ;
+    cto:assignedOrganizationType ex:network_operator_type .
+
+ex:openreach_wholesale_status a cto:WholesaleOnlyStatus ;
+    cto:isWholesaleOnly "true"^^xsd:boolean .
+
+ex:openreach_network_ownership a cto:NetworkOwnershipRelationship ;
+    cto:ownerNetOp ex:openreach ;
+    cto:ownsNetwork ex:openreach_fttp .
 
 # ISP
 ex:bt a foaf:Organization ;
     rdfs:label "BT" ;
-    cto:isOrganizationType ex:isp_type ;
+    cto:hasOrganizationTypeAssignment ex:bt_type_assignment ;
     rdfs:comment "BT Group plc is a British telecommunications company." ;
-    cto:usesNetwork ex:openreach_fttp ;
-    cto:offersService ex:bt_full_fibre ;
+    cto:offersBroadbandService ex:bt_full_fibre ;
     cto:validFrom "1846-01-01"^^xsd:date .
+
+ex:bt_type_assignment a cto:OrganizationTypeAssignment ;
+    cto:assignedOrganizationType ex:isp_type .
+
+ex:bt_network_usage a cto:NetworkUsageRelationship ;
+    cto:usedByISP ex:bt ;
+    cto:usesNetwork ex:openreach_fttp .
 
 # Network
 ex:openreach_fttp a cto:Network ;
     rdfs:label "Openreach FTTP Network" ;
     cto:isNetworkType ex:broadband_network_type ;
     cto:usesLink ex:fttp ;
-    cto:usesLinkStandard ex:fttp_standard ;
-    cto:hasCoverageArea ex:uk, ex:w2_1bt .
+    cto:usesLinkStandard ex:fttp_standard .
 
 # Link Type and Standard
 ex:fttp a cto:Link ;
@@ -54,15 +68,15 @@ ex:fttp_standard a cto:LinkStandard ;
 
 # Broadband Service
 ex:bt_full_fibre a cto:BroadbandService ;
-    rdfs:label "BT Full Fibre" ;
-    cto:hasServiceName "BT Full Fibre 900" ;
-    cto:hasFastestDown "900 Mbps" ;
-    cto:hasFastestUp "110 Mbps" ;
-    cto:hasGuaranteedDown "455 Mbps" ;
-    cto:hasMonthlyCost "49.99"^^xsd:float ;
-    cto:hasSetupCost "9.99"^^xsd:float ;
-    cto:hasBundleHomePhone "true"^^xsd:boolean ;
-    cto:hasBundleVideo "false"^^xsd:boolean ;
+    rdfs:label "BT Full Fibre 900" ;
+    cto:hasFastestDownloadSpeed "900"^^xsd:decimal ;
+    cto:hasFastestUploadSpeed "110"^^xsd:decimal ;
+    cto:hasGuaranteedDownloadSpeed "455"^^xsd:decimal ;
+    cto:hasMonthlyCost "49.99"^^xsd:decimal ;
+    cto:hasSetupCost "9.99"^^xsd:decimal ;
+    cto:hasHomePhoneBundle "true"^^xsd:boolean ;
+    cto:hasVideoBundle "false"^^xsd:boolean ;
+    cto:hasTechnology ex:fttp ;
     cto:validFrom "2020-01-01"^^xsd:date .
 
 # Locations
