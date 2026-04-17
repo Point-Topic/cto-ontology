@@ -27,7 +27,7 @@
     vann:preferredNamespacePrefix "cto" ;
     vann:preferredNamespaceUri "https://github.com/Point-Topic/cto-ontology/" ;
     rdfs:comment "Version 1.1.0: Core entities."@en ;
-    owl:versionInfo 1.1.0 .
+    owl:versionInfo "1.1.0" .
 
 # Annotation Properties
 cc:license a owl:AnnotationProperty .
@@ -234,9 +234,9 @@ gist:hasAspect a owl:ObjectProperty ;
 # Spatial Relations
 geo:sfWithin a geo:SpatialRelation, owl:TransitiveProperty .
 
-geo:sfContains a geo:SpatialRelation, a owl:TransitiveProperty .
+geo:sfContains a geo:SpatialRelation, owl:TransitiveProperty .
 
-geo:sfIntersects a geo:SpatialRelation, a owl:TransitiveProperty .
+geo:sfIntersects a geo:SpatialRelation, owl:TransitiveProperty .
 
 # Data Properties
 
