@@ -133,6 +133,18 @@
 
     <owl:Class rdf:about="#NetworkOwnershipRelationship"/>
 
+    <owl:Class rdf:about="#WholesaleAccessPlatform">
+        <rdfs:label>Wholesale Access Platform</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#ConceptualEntity"/>
+        <rdfs:comment>Non-physical wholesale access channel (provisioning, billing, partner APIs).</rdfs:comment>
+        <owl:disjointWith rdf:resource="#Network"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#PlatformNetworkAccessRelationship">
+        <rdfs:label>Platform Network Access</rdfs:label>
+        <rdfs:comment>Reified ternary: an ISP (or channel partner org) reaches a physical network via a wholesale access platform. Maps to cto_platform_network_access (not cto_uses_network). Channel wholesalers are :accessUsedByISP — not :WholesaleAccessPlatform. Do not stack platforms.</rdfs:comment>
+    </owl:Class>
+
     <!-- Link Classes -->
     <owl:Class rdf:about="#Link">
         <rdfs:comment>The physical transmission medium or infrastructure type used to connect a premises or network endpoint to the broadband access network.</rdfs:comment>
@@ -322,6 +334,31 @@
     <owl:ObjectProperty rdf:about="#ownsNetwork">
         <rdfs:domain rdf:resource="#NetworkOwnershipRelationship"/>
         <rdfs:range rdf:resource="#Network"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#operatedByOrganization">
+        <rdfs:domain rdf:resource="#WholesaleAccessPlatform"/>
+        <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
+        <rdfs:label>operated by organization</rdfs:label>
+        <rdfs:comment>The organization that operates this wholesale access platform. Maps to cto_operates_platform. Not dated: use validFrom/validTo on the platform, or validFrom/validTo on the access relationship for access paths.</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#accessUsedByISP">
+        <rdfs:domain rdf:resource="#PlatformNetworkAccessRelationship"/>
+        <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
+        <rdfs:label>access used by ISP</rdfs:label>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#viaWholesaleAccessPlatform">
+        <rdfs:domain rdf:resource="#PlatformNetworkAccessRelationship"/>
+        <rdfs:range rdf:resource="#WholesaleAccessPlatform"/>
+        <rdfs:label>via wholesale access platform</rdfs:label>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#accessToNetwork">
+        <rdfs:domain rdf:resource="#PlatformNetworkAccessRelationship"/>
+        <rdfs:range rdf:resource="#Network"/>
+        <rdfs:label>access to network</rdfs:label>
     </owl:ObjectProperty>
 
     <!-- Service Object Properties -->

@@ -101,6 +101,21 @@ foaf:Organization a owl:Class ;
 
 :NetworkOwnershipRelationship a owl:Class .
 
+:WholesaleAccessPlatform a owl:Class ;
+    rdfs:label "Wholesale Access Platform" ;
+    rdfs:subClassOf :ConceptualEntity ;
+    rdfs:comment "Non-physical wholesale access channel (provisioning, billing, partner APIs)." ;
+    owl:disjointWith :Network .
+
+:PlatformNetworkAccessRelationship a owl:Class ;
+    rdfs:label "Platform Network Access" ;
+    rdfs:comment """
+        Reified ternary: an ISP (or channel partner org) reaches a physical network
+        via a wholesale access platform. Maps to cto_platform_network_access
+        (not cto_uses_network). Channel wholesalers are :accessUsedByISP — not
+        :WholesaleAccessPlatform. Do not stack platforms.
+    """ .
+
 # Link Classes
 :Link a owl:Class ;
     rdfs:comment "The physical transmission medium or infrastructure type used to connect a premises or network endpoint to the broadband access network." ;
@@ -194,6 +209,31 @@ geo:Geometry a owl:Class ;
 :ownsNetwork a owl:ObjectProperty ;
     rdfs:domain :NetworkOwnershipRelationship ;
     rdfs:range :Network .
+
+:operatedByOrganization a owl:ObjectProperty ;
+    rdfs:domain :WholesaleAccessPlatform ;
+    rdfs:range foaf:Organization ;
+    rdfs:label "operated by organization" ;
+    rdfs:comment """
+        The organization that operates this wholesale access platform.
+        Maps to cto_operates_platform. Not dated: use validFrom/validTo on the
+        platform, or validFrom/validTo on the access relationship for access paths.
+    """ .
+
+:accessUsedByISP a owl:ObjectProperty ;
+    rdfs:domain :PlatformNetworkAccessRelationship ;
+    rdfs:range foaf:Organization ;
+    rdfs:label "access used by ISP" .
+
+:viaWholesaleAccessPlatform a owl:ObjectProperty ;
+    rdfs:domain :PlatformNetworkAccessRelationship ;
+    rdfs:range :WholesaleAccessPlatform ;
+    rdfs:label "via wholesale access platform" .
+
+:accessToNetwork a owl:ObjectProperty ;
+    rdfs:domain :PlatformNetworkAccessRelationship ;
+    rdfs:range :Network ;
+    rdfs:label "access to network" .
 
 # Measurement Object Properties
 :hasMeasurementRecord a owl:ObjectProperty ;
