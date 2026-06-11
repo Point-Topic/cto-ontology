@@ -93,7 +93,7 @@
     </owl:Class>
 
     <owl:Class rdf:about="#OrganizationType">
-        <rdfs:comment>A classification type for organizations based on their role in the telecom industry (e.g., ISP, Network Operator, Non-Telco Organization).</rdfs:comment>
+        <rdfs:comment>A classification type for organizations based on their role in the telecom industry (e.g., ISP, Network Operator, Other Organization, Government Organization).</rdfs:comment>
         <rdfs:subClassOf rdf:resource="#ConceptualEntity"/>
     </owl:Class>
 
