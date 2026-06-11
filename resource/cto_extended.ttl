@@ -131,6 +131,10 @@ foaf:Organization a owl:Class ;
         :WholesaleAccessPlatform. Do not stack platforms.
     """ .
 
+:NetworkNode a owl:Class ;
+    rdfs:comment "A point in a network topology (e.g. exchange, cabinet, ODF, street cabinet, premises endpoint)." ;
+    rdfs:subClassOf :PhysicalInfrastructure .
+
 # Link Classes
 :Link a owl:Class ;
     rdfs:comment "The physical transmission medium or infrastructure type used to connect a premises or network endpoint to the broadband access network." ;
@@ -138,6 +142,11 @@ foaf:Organization a owl:Class ;
 
 :LinkStandard a owl:Class ;
     rdfs:comment "The data transmission standard or protocol used over the physical transmission medium/infrastructure (Link) to deliver broadband connectivity." ;
+    rdfs:subClassOf :ConceptualEntity .
+
+# Market Classes
+:Market a owl:Class ;
+    rdfs:comment "A defined scope within which economic or regulatory activity takes place." ;
     rdfs:subClassOf :ConceptualEntity .
 
 # Service Classes
@@ -268,6 +277,21 @@ dcat:DataService a owl:Class ;
     rdfs:comment "Relates a physical transmission medium/infrastructure link to the protocol/standard." ;
     rdfs:domain :Link ;
     rdfs:range :LinkStandard .
+
+:hasNetworkNode a owl:ObjectProperty ;
+    rdfs:comment "Relates a network to a node in its topology." ;
+    rdfs:domain :Network ;
+    rdfs:range :NetworkNode .
+
+:networkNodeAtLocation a owl:ObjectProperty ;
+    rdfs:comment "Relates a network node to its physical-world location." ;
+    rdfs:domain :NetworkNode ;
+    rdfs:range dcterms:Location .
+
+:hasMarketLocation a owl:ObjectProperty ;
+    rdfs:comment "Relates a market to a geographic location within its defined scope." ;
+    rdfs:domain :Market ;
+    rdfs:range dcterms:Location .
 
 # Network Usage and Ownership
 :usesNetwork a owl:ObjectProperty ;

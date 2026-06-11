@@ -127,6 +127,11 @@
         <rdfs:comment>Reified ternary: an ISP (or channel partner org) reaches a physical network via a wholesale access platform. Maps to cto_platform_network_access (not cto_uses_network). Channel wholesalers are :accessUsedByISP — not :WholesaleAccessPlatform. Do not stack platforms.</rdfs:comment>
     </owl:Class>
 
+    <owl:Class rdf:about="#NetworkNode">
+        <rdfs:comment>A point in a network topology (e.g. exchange, cabinet, ODF, street cabinet, premises endpoint).</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="#PhysicalInfrastructure"/>
+    </owl:Class>
+
     <!-- Link Classes -->
     <owl:Class rdf:about="#Link">
         <rdfs:comment>The physical transmission medium or infrastructure type used to connect a premises or network endpoint to the broadband access network.</rdfs:comment>
@@ -135,6 +140,12 @@
 
     <owl:Class rdf:about="#LinkStandard">
         <rdfs:comment>The data transmission standard or protocol used over the physical transmission medium/infrastructure (Link) to deliver broadband connectivity.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="#ConceptualEntity"/>
+    </owl:Class>
+
+    <!-- Market Classes -->
+    <owl:Class rdf:about="#Market">
+        <rdfs:comment>A defined scope within which economic or regulatory activity takes place.</rdfs:comment>
         <rdfs:subClassOf rdf:resource="#ConceptualEntity"/>
     </owl:Class>
 
@@ -214,6 +225,24 @@
         <rdfs:comment>Relates a physical transmission medium/infrastructure link to the protocol/standard.</rdfs:comment>
         <rdfs:domain rdf:resource="#Link"/>
         <rdfs:range rdf:resource="#LinkStandard"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#hasNetworkNode">
+        <rdfs:comment>Relates a network to a node in its topology.</rdfs:comment>
+        <rdfs:domain rdf:resource="#Network"/>
+        <rdfs:range rdf:resource="#NetworkNode"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#networkNodeAtLocation">
+        <rdfs:comment>Relates a network node to its physical-world location.</rdfs:comment>
+        <rdfs:domain rdf:resource="#NetworkNode"/>
+        <rdfs:range rdf:resource="http://purl.org/dc/terms/Location"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#hasMarketLocation">
+        <rdfs:comment>Relates a market to a geographic location within its defined scope.</rdfs:comment>
+        <rdfs:domain rdf:resource="#Market"/>
+        <rdfs:range rdf:resource="http://purl.org/dc/terms/Location"/>
     </owl:ObjectProperty>
 
     <!-- Network Usage and Ownership -->
