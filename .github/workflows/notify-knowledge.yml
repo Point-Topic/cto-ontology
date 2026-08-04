@@ -1,0 +1,20 @@
+name: Notify knowledge base
+on:
+  push:
+    branches: [main]        # drop this line to fire on every branch
+permissions:
+  contents: read
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dispatch to pt-knowledge
+        env:
+          KB_SYNC_TOKEN: ${{ secrets.KB_SYNC_TOKEN }}
+        run: |
+          gh api --method POST repos/Point-Topic/pt-dev-knowledge/dispatches \
+            -H "Authorization: Bearer ${KB_SYNC_TOKEN}" \
+            -f event_type=repo-pushed \
+            -f "client_payload[repo]=${{ github.repository }}" \
+            -f "client_payload[sha]=${{ github.sha }}" \
+            -f "client_payload[before]=${{ github.event.before }}"
