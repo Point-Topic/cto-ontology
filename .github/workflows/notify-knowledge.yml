@@ -12,10 +12,9 @@ jobs:
     steps:
       - name: Dispatch to pt-knowledge
         env:
-          KB_SYNC_TOKEN: ${{ secrets.KB_SYNC_TOKEN }}
+          GH_TOKEN: ${{ secrets.KB_SYNC_TOKEN }}
         run: |
           gh api --method POST repos/Point-Topic/pt-dev-knowledge/dispatches \
-            -H "Authorization: Bearer ${KB_SYNC_TOKEN}" \
             -f event_type=repo-pushed \
             -f "client_payload[repo]=${{ github.repository }}" \
             -f "client_payload[sha]=${{ github.sha }}" \
